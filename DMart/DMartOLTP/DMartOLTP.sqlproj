@@ -94,4 +94,7 @@
     <Build Include="Stores\Tables\EmployeeAttendance.sql" />
     <Build Include="Products\Tables\ProductPerishableCat.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="DMartOLTP.publish.xml" />
+  </ItemGroup>
 </Project>

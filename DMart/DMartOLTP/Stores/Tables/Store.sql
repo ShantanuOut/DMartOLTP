@@ -6,8 +6,9 @@
 	[StoreAddress1]		VARCHAR(100) NOT NULL,
 	[StoreAddress2]		VARCHAR(100),
 	[StoreAddress3]		VARCHAR(100),
-	IsWarehouse			BIT,
-	EntityPhoneId		UNIQUEIDENTIFIER DEFAULT Df_Store_EntityPhoneId (NEWID()),
+	[IsWarehouse]		BIT,
+	[EntityPhoneId]		UNIQUEIDENTIFIER DEFAULT(NEWID()),
 	CONSTRAINT PK_Store_StoreId PRIMARY KEY CLUSTERED (StoreId),
-	CONSTRAINT UQ_Store_StoreCode UNIQUE (StoreCode)	
+	CONSTRAINT UQ_Store_StoreCode UNIQUE ([StoreCode]),
+	CONSTRAINT UQ_Store_EntityPhoneId UNIQUE ([EntityPhoneId])	
 )
