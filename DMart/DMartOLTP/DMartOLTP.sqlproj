@@ -93,8 +93,16 @@
     <Build Include="Stores\Tables\Employee.sql" />
     <Build Include="Stores\Tables\EmployeeAttendance.sql" />
     <Build Include="Products\Tables\ProductPerishableCat.sql" />
+    <Build Include="Products\Tables\ProductMasterCateg.sql" />
+    <Build Include="Products\Tables\ProductCategory.sql" />
+    <Build Include="Products\Tables\Product.sql" />
+    <Build Include="Products\Tables\RefundReason.sql" />
+    <Build Include="Products\Tables\ProductSKU.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DMartOLTP.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="DMartOLTP.refactorlog" />
   </ItemGroup>
 </Project>

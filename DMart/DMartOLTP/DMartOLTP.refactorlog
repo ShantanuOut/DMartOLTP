@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="87fd7ad2-276b-4809-bedc-104957f0077b" ChangeDateTime="10/22/2018 03:51:24">
+    <Property Name="ElementName" Value="[Products].[ProductMasterCateg].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Products].[ProductMasterCateg]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ProductMasterCategId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ce159910-ddfe-4ed0-948d-32125bffac24" ChangeDateTime="10/22/2018 03:52:14">
+    <Property Name="ElementName" Value="[Products].[ProductMasterCateg].[Field]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Products].[ProductMasterCateg]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ProductPerishableCategId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4180c8ee-5fc9-4388-ac9e-f0a0ecdaa5a8" ChangeDateTime="10/22/2018 03:56:02">
+    <Property Name="ElementName" Value="[Products].[ProductCategory].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Products].[ProductCategory]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ProductCategId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ec0e3d74-04bc-4feb-82a4-b40e2bf7a40e" ChangeDateTime="10/22/2018 04:00:09">
+    <Property Name="ElementName" Value="[Products].[Product].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Products].[Product]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ProductId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1e58b147-b41b-4e93-88dd-c1a2269ab919" ChangeDateTime="10/22/2018 04:06:52">
+    <Property Name="ElementName" Value="[Products].[RefundReason].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Products].[RefundReason]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RefundReasonId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5e68f97c-c896-4879-90db-bd184868261b" ChangeDateTime="10/22/2018 04:08:21">
+    <Property Name="ElementName" Value="[Products].[ProductSKU].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Products].[ProductSKU]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ProductSKU" />
+  </Operation>
+</Operations>
