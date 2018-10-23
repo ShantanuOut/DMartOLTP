@@ -61,7 +61,7 @@
     <Folder Include="Stores" />
     <Folder Include="Products" />
     <Folder Include="Sales" />
-    <Folder Include="Customer" />
+    <Folder Include="Customers" />
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\Views" />
     <Folder Include="dbo\Stored Procedures" />
@@ -74,10 +74,10 @@
     <Folder Include="Sales\Functions" />
     <Folder Include="Sales\Stored Procedures" />
     <Folder Include="Sales\Tables" />
-    <Folder Include="Customer\Functions" />
-    <Folder Include="Customer\Stored Procedures" />
-    <Folder Include="Customer\Tables" />
-    <Folder Include="Customer\Views" />
+    <Folder Include="Customers\Functions" />
+    <Folder Include="Customers\Stored Procedures" />
+    <Folder Include="Customers\Tables" />
+    <Folder Include="Customers\Views" />
     <Folder Include="Stores\Functions" />
     <Folder Include="Stores\Stored Procedures" />
     <Folder Include="Stores\Tables" />
@@ -86,7 +86,7 @@
   <ItemGroup>
     <Build Include="Products\Products.sql" />
     <Build Include="Sales\Sales.sql" />
-    <Build Include="Customer\Customer.sql" />
+    <Build Include="Customers\Customer.sql" />
     <Build Include="Stores\Stores.sql" />
     <Build Include="Stores\Tables\Store.sql" />
     <Build Include="Stores\Tables\Phone.sql" />
@@ -99,6 +99,11 @@
     <Build Include="Products\Tables\RefundReason.sql" />
     <Build Include="Products\Tables\ProductSKU.sql" />
     <Build Include="Products\Tables\Manufacturer.sql" />
+    <Build Include="Sales\Tables\Billing.sql" />
+    <Build Include="Sales\Tables\BillingDetails.sql" />
+    <Build Include="Customers\Tables\RegisteredCustomer.sql" />
+    <Build Include="Customers\Tables\PointsAdded.sql" />
+    <Build Include="Customers\Tables\PointsConsumed.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DMartOLTP.publish.xml" />
