@@ -2,7 +2,7 @@
 --Object Type : Post Deployment Script
 --Date Created : 24th October 2018
 --Name : Shantanu Narale
---Date Modified :
+--Date Modified : 24th October 2018
 --Purpose : Create Initial List of Stores
 /**********************************************************************************************/
 USE DMartOLTP

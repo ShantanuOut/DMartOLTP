@@ -105,14 +105,20 @@
     <Build Include="Customers\Tables\RegisteredCustomer.sql" />
     <Build Include="Customers\Tables\PointsAdded.sql" />
     <Build Include="Customers\Tables\PointsConsumed.sql" />
+    <PostDeploy Include="Post Deployment\Main.PostDeployment.sql" />
+    <None Include="Post Deployment\Stores.Phone_Store.sql" />
+    <Build Include="Stores\Tables\EmployeePhone.sql" />
+    <Build Include="Stores\Tables\StorePhone.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DMartOLTP.refactorlog" />
   </ItemGroup>
   <ItemGroup>
-    <PostDeploy Include="Post Deployment\Stores.Store.PostDeployment.sql" />
+    <None Include="Post Deployment\Stores.Store.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DMartOLTP.publish.xml" />
+    <None Include="DMartOLTP.publish.xml">
+      <CopyToOutputDirectory>DoNotCopy</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
