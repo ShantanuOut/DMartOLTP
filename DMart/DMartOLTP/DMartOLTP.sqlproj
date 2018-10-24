@@ -82,6 +82,7 @@
     <Folder Include="Stores\Stored Procedures" />
     <Folder Include="Stores\Tables" />
     <Folder Include="Stores\Views" />
+    <Folder Include="Post Deployment" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Products\Products.sql" />
@@ -106,9 +107,12 @@
     <Build Include="Customers\Tables\PointsConsumed.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DMartOLTP.publish.xml" />
+    <RefactorLog Include="DMartOLTP.refactorlog" />
   </ItemGroup>
   <ItemGroup>
-    <RefactorLog Include="DMartOLTP.refactorlog" />
+    <PostDeploy Include="Post Deployment\Stores.Store.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DMartOLTP.publish.xml" />
   </ItemGroup>
 </Project>
