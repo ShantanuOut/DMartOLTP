@@ -9,3 +9,4 @@ USE DMartOLTP
 GO
 :r .\Stores.Store.sql
 :r .\Stores.Phone_Store.sql
+:r .\Stores.Employee.sql
