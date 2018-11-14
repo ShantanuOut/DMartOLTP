@@ -91,4 +91,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="PhoneId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="79b72c02-c6f0-4c1e-8004-ec7f6bee6b98" ChangeDateTime="11/14/2018 15:03:37">
+    <Property Name="ElementName" Value="[Stores].[Employee].[IX_Employee_OrgPath_BF]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[Stores].[Employee]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IX_Employee_OrgPath_DF]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ae4553a2-22ec-418f-bbbc-5217f49531f2" ChangeDateTime="11/14/2018 15:03:42">
+    <Property Name="ElementName" Value="[Stores].[Employee].[IX_Employee_OrgLevOrgPath_DF]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[Stores].[Employee]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IX_Employee_OrgLevOrgPath_BF]" />
+  </Operation>
 </Operations>
