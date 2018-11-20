@@ -1,7 +1,9 @@
 ﻿CREATE TABLE [Stores].[Employee]
 (
 	[EmployeeId]		INT IDENTITY(1,1), 
-    [EmployeeCode]		CHAR(5) NOT NULL,     
+    [EmployeeCode]		CHAR(5) NOT NULL,    
+	[FirstName]			VARCHAR(50) NULL,
+	[LastName]			VARCHAR(50) NULL,
     [OrgPath]			hierarchyid NOT NULL, 
 	[OrgLev]			AS [OrgPath].GetLevel(),
     [EntityPhoneId]		UNIQUEIDENTIFIER NOT NULL DEFAULT (NEWID()), 
