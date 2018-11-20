@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DMartOLTP", "DMartOLTP\DMartOLTP.sqlproj", "{6DA2B705-EB8E-4A1F-A74D-E3F1AAE8F802}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMartOLTPUnitTestProject", "DMartOLTPUnitTestProject\DMartOLTPUnitTestProject.csproj", "{B3A1BDF4-99CB-4BF1-9CA7-CFCAD81AD407}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,10 @@ Global
 		{6DA2B705-EB8E-4A1F-A74D-E3F1AAE8F802}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DA2B705-EB8E-4A1F-A74D-E3F1AAE8F802}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6DA2B705-EB8E-4A1F-A74D-E3F1AAE8F802}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B3A1BDF4-99CB-4BF1-9CA7-CFCAD81AD407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3A1BDF4-99CB-4BF1-9CA7-CFCAD81AD407}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3A1BDF4-99CB-4BF1-9CA7-CFCAD81AD407}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3A1BDF4-99CB-4BF1-9CA7-CFCAD81AD407}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

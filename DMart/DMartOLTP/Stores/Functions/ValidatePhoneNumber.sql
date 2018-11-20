@@ -20,7 +20,7 @@ BEGIN
 	END
 	IF (LEN(@phone) = 13)
 	BEGIN
-		IF (((SELECT PATINDEX('%[^+0-9]%',@phone)) = 0) AND ((SELECT PATINDEX('+%',@phone)) = 0) AND (SELECT PATINDEX('%+%', SUBSTRING(@phone, 2, LEN(@phone) + 1))) = 0)
+		IF (((SELECT PATINDEX('%[^+0-9]%',@phone)) = 0) AND ((SELECT PATINDEX('+%',@phone)) = 1) AND (SELECT PATINDEX('%+%', SUBSTRING(@phone, 2, LEN(@phone) + 1))) = 0)
 			SET @ret = 0
 	END
 	RETURN @ret
