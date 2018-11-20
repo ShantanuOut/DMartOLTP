@@ -62,5 +62,8 @@
     <Build Include="BlankQuery.sql" />
     <Build Include="DMartOLTPProcedure.sql" />
     <Build Include="DMartOLTPView.sql" />
+    <Build Include="DMartScalarValuedFunction.sql" />
+    <Build Include="DMartInlineFunction.sql" />
+    <Build Include="DmartTableValuedFunction.sql" />
   </ItemGroup>
 </Project>
