@@ -83,6 +83,8 @@
     <Folder Include="Stores\Tables" />
     <Folder Include="Stores\Views" />
     <Folder Include="Post Deployment" />
+    <Folder Include="Stores\Types" />
+    <Folder Include="Stores\Types\XML Schema Collections" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Products\Products.sql" />
@@ -110,16 +112,20 @@
     <Build Include="Stores\Tables\EmployeePhone.sql" />
     <Build Include="Stores\Tables\StorePhone.sql" />
     <None Include="Post Deployment\Stores.Employee.sql" />
-    <Build Include="Stores\Functions\ValidatePhoneNumber.sql" />
+    <Build Include="Stores\Functions\fnValidatePhoneNumber.sql" />
+    <Build Include="Stores\Types\XML Schema Collections\EmployeeXMLSchema.sql" />
+    <Build Include="Stores\Functions\fnGenerateEmployeeCode.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DMartOLTP.refactorlog" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Post Deployment\Stores.Store.sql" />
+    <None Include="Post Deployment\AddMessages.sql" />
+    <None Include="DMartOLTP.publish.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DMartOLTP.publish.xml">
+    <None Include="DMartOLTPUnitTest.publish.xml">
       <CopyToOutputDirectory>DoNotCopy</CopyToOutputDirectory>
     </None>
   </ItemGroup>

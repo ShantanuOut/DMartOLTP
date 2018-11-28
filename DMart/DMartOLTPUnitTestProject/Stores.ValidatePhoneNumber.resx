@@ -124,7 +124,7 @@ DECLARE @RC AS BIT, @phone AS VARCHAR (15);
 SELECT @RC = NULL,
        @phone = '9130089763';
 
-SELECT @RC = [Stores].[ValidatePhoneNumber](@phone);
+SELECT @RC = [Stores].[fnValidatePhoneNumber](@phone);
 
 SELECT NULLIF(@RC, 0) AS RC;
 
@@ -148,7 +148,7 @@ DECLARE @RC AS BIT, @phone AS VARCHAR (15);
 SELECT @RC = NULL,
        @phone = '+919130089763';
 
-SELECT @RC = [Stores].[ValidatePhoneNumber](@phone);
+SELECT @RC = [Stores].[fnValidatePhoneNumber](@phone);
 
 SELECT NULLIF(@RC, 0) AS RC;</value>
   </data>
@@ -169,7 +169,7 @@ DECLARE @RC AS BIT, @phone AS VARCHAR (15);
 SELECT @RC = NULL,
        @phone = '9130G89763';
 
-SELECT @RC = [Stores].[ValidatePhoneNumber](@phone);
+SELECT @RC = [Stores].[fnValidatePhoneNumber](@phone);
 
 SELECT NULLIF(@RC, 1) AS RC;</value>
   </data>
@@ -190,7 +190,7 @@ DECLARE @RC AS BIT, @phone AS VARCHAR (15);
 SELECT @RC = NULL,
        @phone = '91*0089763';
 
-SELECT @RC = [Stores].[ValidatePhoneNumber](@phone);
+SELECT @RC = [Stores].[fnValidatePhoneNumber](@phone);
 
 SELECT NULLIF(@RC, 1) AS RC;</value>
   </data>
@@ -211,7 +211,7 @@ DECLARE @RC AS BIT, @phone AS VARCHAR (15);
 SELECT @RC = NULL,
        @phone = '+9191*0089763';
 
-SELECT @RC = [Stores].[ValidatePhoneNumber](@phone);
+SELECT @RC = [Stores].[fnValidatePhoneNumber](@phone);
 
 SELECT NULLIF(@RC, 1) AS RC;</value>
   </data>
@@ -232,7 +232,7 @@ DECLARE @RC AS BIT, @phone AS VARCHAR (15);
 SELECT @RC = NULL,
        @phone = '913089763';
 
-SELECT @RC = [Stores].[ValidatePhoneNumber](@phone);
+SELECT @RC = [Stores].[fnValidatePhoneNumber](@phone);
 
 SELECT NULLIF(@RC, 1) AS RC;</value>
   </data>
@@ -253,7 +253,7 @@ DECLARE @RC AS BIT, @phone AS VARCHAR (15);
 SELECT @RC = NULL,
        @phone = '+9191300897635';
 
-SELECT @RC = [Stores].[ValidatePhoneNumber](@phone);
+SELECT @RC = [Stores].[fnValidatePhoneNumber](@phone);
 
 SELECT NULLIF(@RC, 1) AS RC;</value>
   </data>
@@ -274,7 +274,7 @@ DECLARE @RC AS BIT, @phone AS VARCHAR (15);
 SELECT @RC = NULL,
        @phone = '9191300897630';
 
-SELECT @RC = [Stores].[ValidatePhoneNumber](@phone);
+SELECT @RC = [Stores].[fnValidatePhoneNumber](@phone);
 
 SELECT NULLIF(@RC, 1) AS RC;</value>
   </data>

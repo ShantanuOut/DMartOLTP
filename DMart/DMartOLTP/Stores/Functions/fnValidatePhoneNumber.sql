@@ -5,7 +5,7 @@
 --Date Modified :
 --Purpose : 
 /**********************************************************************************************/
-CREATE FUNCTION [Stores].[ValidatePhoneNumber]
+CREATE FUNCTION [Stores].[fnValidatePhoneNumber]
 (
 	@phone	VARCHAR(15)
 )

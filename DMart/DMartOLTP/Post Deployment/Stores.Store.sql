@@ -5,8 +5,6 @@
 --Date Modified : 24th October 2018
 --Purpose : Create Initial List of Stores
 /**********************************************************************************************/
-USE DMartOLTP
-GO
 IF NOT EXISTS(SELECT TOP 1 1 FROM Stores.Store WITH (NOLOCK))
 BEGIN
 	BEGIN TRAN insStore	

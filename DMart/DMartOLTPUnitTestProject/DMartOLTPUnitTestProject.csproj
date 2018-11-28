@@ -57,6 +57,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="fnGenerateEmployeeCode.cs">
+      <SubType>Designer</SubType>
+    </Compile>
     <Compile Include="SqlDatabaseSetup.cs" />
     <Compile Include="Stores.ValidatePhoneNumber.cs">
       <SubType>Designer</SubType>
@@ -68,6 +71,9 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="fnGenerateEmployeeCode.resx">
+      <DependentUpon>fnGenerateEmployeeCode.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Stores.ValidatePhoneNumber.resx">
       <DependentUpon>Stores.ValidatePhoneNumber.cs</DependentUpon>
     </EmbeddedResource>

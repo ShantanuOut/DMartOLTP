@@ -105,4 +105,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="[IX_Employee_OrgLevOrgPath_BF]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="e7bb55ad-ae3f-4996-8144-e6e9c4b85e73" ChangeDateTime="11/25/2018 03:16:20">
+    <Property Name="ElementName" Value="[Stores].[ValidatePhoneNumber]" />
+    <Property Name="ElementType" Value="SqlScalarFunction" />
+    <Property Name="ParentElementName" Value="[Stores]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[fnValidatePhoneNumber]" />
+  </Operation>
 </Operations>

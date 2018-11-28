@@ -5,8 +5,7 @@
 --Date Modified : 
 --Purpose : Main Post Deployment Script
 /**********************************************************************************************/
-USE DMartOLTP
-GO
 :r .\Stores.Store.sql
 :r .\Stores.Phone_Store.sql
 :r .\Stores.Employee.sql
+:r .\AddMessages.sql
