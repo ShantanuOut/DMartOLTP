@@ -115,6 +115,9 @@
     <Build Include="Stores\Functions\fnValidatePhoneNumber.sql" />
     <Build Include="Stores\Types\XML Schema Collections\EmployeeXMLSchema.sql" />
     <Build Include="Stores\Functions\fnGenerateEmployeeCode.sql" />
+    <Build Include="Stores\Stored Procedures\uspAddEmployee.sql" />
+    <Build Include="Stores\Types\XML Schema Collections\PhoneXMLSchema.sql" />
+    <Build Include="Stores\Stored Procedures\uspAddPhoneNumbers.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DMartOLTP.refactorlog" />

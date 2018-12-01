@@ -19,10 +19,17 @@
         </xs:element>
         <xs:element name="PhoneNumbers" minOccurs="1" maxOccurs="1">
           <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Phone" type="xs:string" minOccurs="0" maxOccurs="3"/>
-            </xs:sequence>
-			<xs:attribute name="IsPrimary" type="xs:integer" use="required" />
+            <xs:sequence>			  
+              <xs:element name="Phone" minOccurs="0" maxOccurs="3">			  
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="IsPrimary" type="xs:integer" use="required" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			   </xs:element>
+            </xs:sequence>			
           </xs:complexType>
         </xs:element>
       </xs:sequence>
