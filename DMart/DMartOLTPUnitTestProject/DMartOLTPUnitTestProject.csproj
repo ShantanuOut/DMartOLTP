@@ -43,6 +43,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Transactions" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -61,10 +62,9 @@
       <SubType>Designer</SubType>
     </Compile>
     <Compile Include="SqlDatabaseSetup.cs" />
-    <Compile Include="Stores.ValidatePhoneNumber.cs">
+    <Compile Include="ValidatePhoneNumber.cs">
       <SubType>Designer</SubType>
     </Compile>
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,8 +74,8 @@
     <EmbeddedResource Include="fnGenerateEmployeeCode.resx">
       <DependentUpon>fnGenerateEmployeeCode.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Stores.ValidatePhoneNumber.resx">
-      <DependentUpon>Stores.ValidatePhoneNumber.cs</DependentUpon>
+    <EmbeddedResource Include="ValidatePhoneNumber.resx">
+      <DependentUpon>ValidatePhoneNumber.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

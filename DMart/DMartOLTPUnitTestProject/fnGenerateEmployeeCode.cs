@@ -6,6 +6,7 @@ using System.Text;
 using Microsoft.Data.Tools.Schema.Sql.UnitTesting;
 using Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using System.Transactions;
 
 namespace DMartOLTPUnitTestProject
 {
@@ -49,17 +50,18 @@ namespace DMartOLTPUnitTestProject
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction NameThreeChar_TestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition4;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction NameThreeCharRepeating_TestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction NameThreeCharRepeating_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition5;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction NameThreeCharRepeating_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction NameThreeCharRepeating_PosttestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction NameThreeCharRepeatingTwice_TestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction NameThreeCharRepeatingTwice_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition6;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction NameThreeCharRepeatingTwice_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction NameThreeCharRepeatingTwice_PosttestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction GetXXXXXVALForThreeLetterName_TestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition7;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction GetXXXXXVALForThreeLetterName_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction GetXXXXXVALForThreeLetterName_PosttestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition7;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction testCleanupAction;
             this.GenerateEmployeeCodeData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.GenerateRepeatingEmployeeCodeData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.NameFourCharData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
@@ -78,17 +80,18 @@ namespace DMartOLTPUnitTestProject
             NameThreeChar_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             scalarValueCondition4 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             NameThreeCharRepeating_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            NameThreeCharRepeating_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             scalarValueCondition5 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            NameThreeCharRepeating_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             NameThreeCharRepeating_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             NameThreeCharRepeatingTwice_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            NameThreeCharRepeatingTwice_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             scalarValueCondition6 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            NameThreeCharRepeatingTwice_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             NameThreeCharRepeatingTwice_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             GetXXXXXVALForThreeLetterName_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            scalarValueCondition7 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             GetXXXXXVALForThreeLetterName_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             GetXXXXXVALForThreeLetterName_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            scalarValueCondition7 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            testCleanupAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             // 
             // GenerateEmployeeCode_TestAction
             // 
@@ -143,6 +146,94 @@ namespace DMartOLTPUnitTestProject
             // 
             resources.ApplyResources(GenerateRepeatingEmployeeCode_PosttestAction, "GenerateRepeatingEmployeeCode_PosttestAction");
             // 
+            // NameThreeChar_TestAction
+            // 
+            NameThreeChar_TestAction.Conditions.Add(scalarValueCondition4);
+            resources.ApplyResources(NameThreeChar_TestAction, "NameThreeChar_TestAction");
+            // 
+            // scalarValueCondition4
+            // 
+            scalarValueCondition4.ColumnNumber = 1;
+            scalarValueCondition4.Enabled = true;
+            scalarValueCondition4.ExpectedValue = "SUKSU";
+            scalarValueCondition4.Name = "scalarValueCondition4";
+            scalarValueCondition4.NullExpected = false;
+            scalarValueCondition4.ResultSet = 1;
+            scalarValueCondition4.RowNumber = 1;
+            // 
+            // NameThreeCharRepeating_TestAction
+            // 
+            NameThreeCharRepeating_TestAction.Conditions.Add(scalarValueCondition5);
+            resources.ApplyResources(NameThreeCharRepeating_TestAction, "NameThreeCharRepeating_TestAction");
+            // 
+            // scalarValueCondition5
+            // 
+            scalarValueCondition5.ColumnNumber = 1;
+            scalarValueCondition5.Enabled = true;
+            scalarValueCondition5.ExpectedValue = "UKSUK";
+            scalarValueCondition5.Name = "scalarValueCondition5";
+            scalarValueCondition5.NullExpected = false;
+            scalarValueCondition5.ResultSet = 1;
+            scalarValueCondition5.RowNumber = 1;
+            // 
+            // NameThreeCharRepeating_PretestAction
+            // 
+            resources.ApplyResources(NameThreeCharRepeating_PretestAction, "NameThreeCharRepeating_PretestAction");
+            // 
+            // NameThreeCharRepeating_PosttestAction
+            // 
+            resources.ApplyResources(NameThreeCharRepeating_PosttestAction, "NameThreeCharRepeating_PosttestAction");
+            // 
+            // NameThreeCharRepeatingTwice_TestAction
+            // 
+            NameThreeCharRepeatingTwice_TestAction.Conditions.Add(scalarValueCondition6);
+            resources.ApplyResources(NameThreeCharRepeatingTwice_TestAction, "NameThreeCharRepeatingTwice_TestAction");
+            // 
+            // scalarValueCondition6
+            // 
+            scalarValueCondition6.ColumnNumber = 1;
+            scalarValueCondition6.Enabled = true;
+            scalarValueCondition6.ExpectedValue = "KSUKS";
+            scalarValueCondition6.Name = "scalarValueCondition6";
+            scalarValueCondition6.NullExpected = false;
+            scalarValueCondition6.ResultSet = 1;
+            scalarValueCondition6.RowNumber = 1;
+            // 
+            // NameThreeCharRepeatingTwice_PretestAction
+            // 
+            resources.ApplyResources(NameThreeCharRepeatingTwice_PretestAction, "NameThreeCharRepeatingTwice_PretestAction");
+            // 
+            // NameThreeCharRepeatingTwice_PosttestAction
+            // 
+            resources.ApplyResources(NameThreeCharRepeatingTwice_PosttestAction, "NameThreeCharRepeatingTwice_PosttestAction");
+            // 
+            // GetXXXXXVALForThreeLetterName_TestAction
+            // 
+            GetXXXXXVALForThreeLetterName_TestAction.Conditions.Add(scalarValueCondition7);
+            resources.ApplyResources(GetXXXXXVALForThreeLetterName_TestAction, "GetXXXXXVALForThreeLetterName_TestAction");
+            // 
+            // scalarValueCondition7
+            // 
+            scalarValueCondition7.ColumnNumber = 1;
+            scalarValueCondition7.Enabled = true;
+            scalarValueCondition7.ExpectedValue = "XXXXX";
+            scalarValueCondition7.Name = "scalarValueCondition7";
+            scalarValueCondition7.NullExpected = false;
+            scalarValueCondition7.ResultSet = 1;
+            scalarValueCondition7.RowNumber = 1;
+            // 
+            // GetXXXXXVALForThreeLetterName_PretestAction
+            // 
+            resources.ApplyResources(GetXXXXXVALForThreeLetterName_PretestAction, "GetXXXXXVALForThreeLetterName_PretestAction");
+            // 
+            // GetXXXXXVALForThreeLetterName_PosttestAction
+            // 
+            resources.ApplyResources(GetXXXXXVALForThreeLetterName_PosttestAction, "GetXXXXXVALForThreeLetterName_PosttestAction");
+            // 
+            // testCleanupAction
+            // 
+            resources.ApplyResources(testCleanupAction, "testCleanupAction");
+            // 
             // GenerateEmployeeCodeData
             // 
             this.GenerateEmployeeCodeData.PosttestAction = null;
@@ -167,49 +258,11 @@ namespace DMartOLTPUnitTestProject
             this.NameThreeCharData.PretestAction = null;
             this.NameThreeCharData.TestAction = NameThreeChar_TestAction;
             // 
-            // NameThreeChar_TestAction
-            // 
-            NameThreeChar_TestAction.Conditions.Add(scalarValueCondition4);
-            resources.ApplyResources(NameThreeChar_TestAction, "NameThreeChar_TestAction");
-            // 
-            // scalarValueCondition4
-            // 
-            scalarValueCondition4.ColumnNumber = 1;
-            scalarValueCondition4.Enabled = true;
-            scalarValueCondition4.ExpectedValue = "SUKSU";
-            scalarValueCondition4.Name = "scalarValueCondition4";
-            scalarValueCondition4.NullExpected = false;
-            scalarValueCondition4.ResultSet = 1;
-            scalarValueCondition4.RowNumber = 1;
-            // 
             // NameThreeCharRepeatingData
             // 
             this.NameThreeCharRepeatingData.PosttestAction = NameThreeCharRepeating_PosttestAction;
             this.NameThreeCharRepeatingData.PretestAction = NameThreeCharRepeating_PretestAction;
             this.NameThreeCharRepeatingData.TestAction = NameThreeCharRepeating_TestAction;
-            // 
-            // NameThreeCharRepeating_TestAction
-            // 
-            NameThreeCharRepeating_TestAction.Conditions.Add(scalarValueCondition5);
-            resources.ApplyResources(NameThreeCharRepeating_TestAction, "NameThreeCharRepeating_TestAction");
-            // 
-            // NameThreeCharRepeating_PretestAction
-            // 
-            resources.ApplyResources(NameThreeCharRepeating_PretestAction, "NameThreeCharRepeating_PretestAction");
-            // 
-            // scalarValueCondition5
-            // 
-            scalarValueCondition5.ColumnNumber = 1;
-            scalarValueCondition5.Enabled = true;
-            scalarValueCondition5.ExpectedValue = "UKSUK";
-            scalarValueCondition5.Name = "scalarValueCondition5";
-            scalarValueCondition5.NullExpected = false;
-            scalarValueCondition5.ResultSet = 1;
-            scalarValueCondition5.RowNumber = 1;
-            // 
-            // NameThreeCharRepeating_PosttestAction
-            // 
-            resources.ApplyResources(NameThreeCharRepeating_PosttestAction, "NameThreeCharRepeating_PosttestAction");
             // 
             // NameThreeCharRepeatingTwiceData
             // 
@@ -217,57 +270,15 @@ namespace DMartOLTPUnitTestProject
             this.NameThreeCharRepeatingTwiceData.PretestAction = NameThreeCharRepeatingTwice_PretestAction;
             this.NameThreeCharRepeatingTwiceData.TestAction = NameThreeCharRepeatingTwice_TestAction;
             // 
-            // NameThreeCharRepeatingTwice_TestAction
-            // 
-            NameThreeCharRepeatingTwice_TestAction.Conditions.Add(scalarValueCondition6);
-            resources.ApplyResources(NameThreeCharRepeatingTwice_TestAction, "NameThreeCharRepeatingTwice_TestAction");
-            // 
-            // NameThreeCharRepeatingTwice_PretestAction
-            // 
-            resources.ApplyResources(NameThreeCharRepeatingTwice_PretestAction, "NameThreeCharRepeatingTwice_PretestAction");
-            // 
-            // scalarValueCondition6
-            // 
-            scalarValueCondition6.ColumnNumber = 1;
-            scalarValueCondition6.Enabled = true;
-            scalarValueCondition6.ExpectedValue = "KSUKS";
-            scalarValueCondition6.Name = "scalarValueCondition6";
-            scalarValueCondition6.NullExpected = false;
-            scalarValueCondition6.ResultSet = 1;
-            scalarValueCondition6.RowNumber = 1;
-            // 
-            // NameThreeCharRepeatingTwice_PosttestAction
-            // 
-            resources.ApplyResources(NameThreeCharRepeatingTwice_PosttestAction, "NameThreeCharRepeatingTwice_PosttestAction");
-            // 
             // GetXXXXXVALForThreeLetterNameData
             // 
             this.GetXXXXXVALForThreeLetterNameData.PosttestAction = GetXXXXXVALForThreeLetterName_PosttestAction;
             this.GetXXXXXVALForThreeLetterNameData.PretestAction = GetXXXXXVALForThreeLetterName_PretestAction;
             this.GetXXXXXVALForThreeLetterNameData.TestAction = GetXXXXXVALForThreeLetterName_TestAction;
             // 
-            // GetXXXXXVALForThreeLetterName_TestAction
+            // fnGenerateEmployeeCode
             // 
-            GetXXXXXVALForThreeLetterName_TestAction.Conditions.Add(scalarValueCondition7);
-            resources.ApplyResources(GetXXXXXVALForThreeLetterName_TestAction, "GetXXXXXVALForThreeLetterName_TestAction");
-            // 
-            // GetXXXXXVALForThreeLetterName_PretestAction
-            // 
-            resources.ApplyResources(GetXXXXXVALForThreeLetterName_PretestAction, "GetXXXXXVALForThreeLetterName_PretestAction");
-            // 
-            // GetXXXXXVALForThreeLetterName_PosttestAction
-            // 
-            resources.ApplyResources(GetXXXXXVALForThreeLetterName_PosttestAction, "GetXXXXXVALForThreeLetterName_PosttestAction");
-            // 
-            // scalarValueCondition7
-            // 
-            scalarValueCondition7.ColumnNumber = 1;
-            scalarValueCondition7.Enabled = true;
-            scalarValueCondition7.ExpectedValue = "XXXXX";
-            scalarValueCondition7.Name = "scalarValueCondition7";
-            scalarValueCondition7.NullExpected = false;
-            scalarValueCondition7.ResultSet = 1;
-            scalarValueCondition7.RowNumber = 1;
+            this.TestCleanupAction = testCleanupAction;
         }
 
         #endregion
@@ -290,6 +301,11 @@ namespace DMartOLTPUnitTestProject
         [TestMethod()]
         public void GenerateEmployeeCode()
         {
+            //bool flg = false;
+            //TransactionScope ts = new TransactionScope(TransactionScopeOption.Required);
+            //ExecutionContext.Connection.EnlistTransaction(Transaction.Current);
+            //PrivilegedContext.Connection.EnlistTransaction(Transaction.Current);
+
             SqlDatabaseTestActions testActions = this.GenerateEmployeeCodeData;
             // Execute the pre-test script
             // 
@@ -302,12 +318,22 @@ namespace DMartOLTPUnitTestProject
                 System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
                 SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
             }
+            //catch (Exception ex)
+            //{
+            //    System.Diagnostics.Trace.WriteLine(ex.Message);
+            //    ts.Dispose();
+            //    flg = true;
+            //}
             finally
             {
                 // Execute the post-test script
                 // 
                 System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
                 SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
+                //if (flg)
+                //{
+                //    ts.Complete();
+                //}
             }
         }
         [TestMethod()]

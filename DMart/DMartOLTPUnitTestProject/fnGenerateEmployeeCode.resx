@@ -246,18 +246,27 @@ SELECT @RC = [Stores].[fnGenerateEmployeeCode](@FirstName, @LastName);
 
 SELECT @RC AS RC;</value>
   </data>
-  <data name="NameThreeCharRepeating_PosttestAction.SqlScript" xml:space="preserve">
+  <data name="NameThreeCharRepeating_TestAction.SqlScript" xml:space="preserve">
     <value>/*
-Add SQL statements here that you want to run after 
-the test script is run.
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
 
 In the lower pane, you can add test conditions that verify 
 whether the results of your SQL statements match what 
 you expect.
 */
-DELETE FROM Stores.Employee
-WHERE FirstName = 'SU'
-AND LastName = 'K'</value>
+DECLARE @RC AS CHAR (5), @FirstName AS VARCHAR (50), @LastName AS VARCHAR (50);
+
+SELECT @RC = NULL,
+       @FirstName	=	'SU',
+       @LastName	=	'K';
+
+SELECT @RC = [Stores].[fnGenerateEmployeeCode](@FirstName, @LastName);
+
+SELECT @RC AS RC;</value>
   </data>
   <data name="NameThreeCharRepeating_PretestAction.SqlScript" xml:space="preserve">
     <value>/*
@@ -295,7 +304,20 @@ SELECT @EmpCode = [Stores].[fnGenerateEmployeeCode](@FirstName, @LastName)
 INSERT Stores.Employee (EmployeeCode, FirstName, LastName, OrgPath, Address1, StoreId, BloodGroup, IsManager, Designation)
 VALUES (@EmpCode, @FirstName, @LastName, @newHier, @Address1, @StoreId, @Blood, @IsMan, @Designation)</value>
   </data>
-  <data name="NameThreeCharRepeating_TestAction.SqlScript" xml:space="preserve">
+  <data name="NameThreeCharRepeating_PosttestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run after 
+the test script is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DELETE FROM Stores.Employee
+WHERE FirstName = 'SU'
+AND LastName = 'K'</value>
+  </data>
+  <data name="NameThreeCharRepeatingTwice_TestAction.SqlScript" xml:space="preserve">
     <value>/*
 Add SQL statements here to exercise the database object 
 that you want to test.
@@ -316,19 +338,6 @@ SELECT @RC = NULL,
 SELECT @RC = [Stores].[fnGenerateEmployeeCode](@FirstName, @LastName);
 
 SELECT @RC AS RC;</value>
-  </data>
-  <data name="NameThreeCharRepeatingTwice_PosttestAction.SqlScript" xml:space="preserve">
-    <value>/*
-Add SQL statements here that you want to run after 
-the test script is run.
-
-In the lower pane, you can add test conditions that verify 
-whether the results of your SQL statements match what 
-you expect.
-*/
-DELETE FROM Stores.Employee
-WHERE FirstName = 'SU'
-AND LastName = 'K'</value>
   </data>
   <data name="NameThreeCharRepeatingTwice_PretestAction.SqlScript" xml:space="preserve">
     <value>/*
@@ -376,7 +385,20 @@ BEGIN
 	SET @loop += 1
 END</value>
   </data>
-  <data name="NameThreeCharRepeatingTwice_TestAction.SqlScript" xml:space="preserve">
+  <data name="NameThreeCharRepeatingTwice_PosttestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run after 
+the test script is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DELETE FROM Stores.Employee
+WHERE FirstName = 'SU'
+AND LastName = 'K'</value>
+  </data>
+  <data name="GetXXXXXVALForThreeLetterName_TestAction.SqlScript" xml:space="preserve">
     <value>/*
 Add SQL statements here to exercise the database object 
 that you want to test.
@@ -397,19 +419,6 @@ SELECT @RC = NULL,
 SELECT @RC = [Stores].[fnGenerateEmployeeCode](@FirstName, @LastName);
 
 SELECT @RC AS RC;</value>
-  </data>
-  <data name="GetXXXXXVALForThreeLetterName_PosttestAction.SqlScript" xml:space="preserve">
-    <value>/*
-Add SQL statements here that you want to run after 
-the test script is run.
-
-In the lower pane, you can add test conditions that verify 
-whether the results of your SQL statements match what 
-you expect.
-*/
-DELETE FROM Stores.Employee
-WHERE FirstName = 'SU'
-AND LastName = 'K'</value>
   </data>
   <data name="GetXXXXXVALForThreeLetterName_PretestAction.SqlScript" xml:space="preserve">
     <value>/*
@@ -457,27 +466,31 @@ BEGIN
 	SET @loop += 1
 END</value>
   </data>
-  <data name="GetXXXXXVALForThreeLetterName_TestAction.SqlScript" xml:space="preserve">
+  <data name="GetXXXXXVALForThreeLetterName_PosttestAction.SqlScript" xml:space="preserve">
     <value>/*
-Add SQL statements here to exercise the database object 
-that you want to test.
-
-To test a stored procedure, invoke it here by adding 
-an EXEC statement that has appropriate parameters.
+Add SQL statements here that you want to run after 
+the test script is run.
 
 In the lower pane, you can add test conditions that verify 
 whether the results of your SQL statements match what 
 you expect.
 */
-DECLARE @RC AS CHAR (5), @FirstName AS VARCHAR (50), @LastName AS VARCHAR (50);
+DELETE FROM Stores.Employee
+WHERE FirstName = 'SU'
+AND LastName = 'K'</value>
+  </data>
+  <data name="testCleanupAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run after 
+each test method (unit test) in this test class is run.
 
-SELECT @RC = NULL,
-       @FirstName	=	'SU',
-       @LastName	=	'K';
-
-SELECT @RC = [Stores].[fnGenerateEmployeeCode](@FirstName, @LastName);
-
-SELECT @RC AS RC;</value>
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @MaxId INT
+SELECT @MaxId = MAX(EmployeeId) FROM Stores.Employee
+DBCC CHECKIDENT('Stores.Employee', RESEED, @MaxId)</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
