@@ -117,36 +117,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SinglePhoneEmp_PosttestAction.SqlScript" xml:space="preserve">
+  <data name="testInitializeAction.SqlScript" xml:space="preserve">
     <value>/*
-Add SQL statements here that you want to run after 
-the test script is run.
+Add SQL statements here that you want to run before 
+each test method (unit test) in this test class is run.
 
 In the lower pane, you can add test conditions that verify 
 whether the results of your SQL statements match what 
 you expect.
 */
-DECLARE @UniqueId	UNIQUEIDENTIFIER
-DECLARE @Phone AS TABLE
-(
-	PhoneId	INT
-)
+</value>
+  </data>
+  <data name="testCleanupAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run after 
+each test method (unit test) in this test class is run.
 
-SELECT TOP 1 @UniqueId = EntityPhoneId
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @maxId	INT
+SELECT @maxId = MAX(PhoneId)
+FROM Stores.Phone
+DBCC CHECKIDENT('Stores.Phone', RESEED, @maxId)
+SELECT @maxId = MAX(EmployeeId)
 FROM Stores.Employee
-WHERE FirstName = 'Test'
-AND LastName = 'Test'
-
-DELETE FROM Stores.EmployeePhone
-OUTPUT deleted.PhoneId INTO @Phone
-WHERE EntityPhoneId = @UniqueId
-
-DELETE FROM Stores.Phone
-WHERE PhoneId IN (SELECT PhoneId FROM @Phone)
-
-DELETE FROM Stores.Employee
-WHERE FirstName = 'Test'
-AND LastName = 'Test'</value>
+DBCC CHECKIDENT('Stores.Employee', RESEED, @maxId)
+SELECT @maxId = MAX(StoreId)
+FROM Stores.Store
+DBCC CHECKIDENT('Stores.Store', RESEED, @maxId)</value>
   </data>
   <data name="SinglePhoneEmp_PretestAction.SqlScript" xml:space="preserve">
     <value>/*
@@ -221,38 +221,7 @@ INNER JOIN Stores.Phone	p
 WHERE e.FirstName = 'Test'
 AND e.LastName = 'Test'</value>
   </data>
-  <data name="testInitializeAction.SqlScript" xml:space="preserve">
-    <value>/*
-Add SQL statements here that you want to run before 
-each test method (unit test) in this test class is run.
-
-In the lower pane, you can add test conditions that verify 
-whether the results of your SQL statements match what 
-you expect.
-*/
-</value>
-  </data>
-  <data name="testCleanupAction.SqlScript" xml:space="preserve">
-    <value>/*
-Add SQL statements here that you want to run after 
-each test method (unit test) in this test class is run.
-
-In the lower pane, you can add test conditions that verify 
-whether the results of your SQL statements match what 
-you expect.
-*/
-DECLARE @maxId	INT
-SELECT @maxId = MAX(PhoneId)
-FROM Stores.Phone
-DBCC CHECKIDENT('Stores.Phone', RESEED, @maxId)
-SELECT @maxId = MAX(EmployeeId)
-FROM Stores.Employee
-DBCC CHECKIDENT('Stores.Employee', RESEED, @maxId)
-SELECT @maxId = MAX(StoreId)
-FROM Stores.Store
-DBCC CHECKIDENT('Stores.Store', RESEED, @maxId)</value>
-  </data>
-  <data name="MultiPhoneEmp_PosttestAction.SqlScript" xml:space="preserve">
+  <data name="SinglePhoneEmp_PosttestAction.SqlScript" xml:space="preserve">
     <value>/*
 Add SQL statements here that you want to run after 
 the test script is run.
@@ -282,42 +251,6 @@ WHERE PhoneId IN (SELECT PhoneId FROM @Phone)
 DELETE FROM Stores.Employee
 WHERE FirstName = 'Test'
 AND LastName = 'Test'</value>
-  </data>
-  <data name="MultiPhoneEmp_PretestAction.SqlScript" xml:space="preserve">
-    <value>/*
-Add SQL statements here that you want to run before
-the test script is run.
-
-In the lower pane, you can add test conditions that verify 
-whether the results of your SQL statements match what 
-you expect.
-*/
-DECLARE @EmpCode		CHAR(5),
-		@FirstName		VARCHAR(50) = 'Test',
-		@LastName		VARCHAR(50) = 'Test',
-		@Parent			INT			= 1,
-		@Address1		VARCHAR(50) = 'Sample Address',
-		@StoreId		INT			= 2,
-		@Blood			CHAR(3)		= 'B+',
-		@IsMan			BIT			= 1,
-		@Designation	VARCHAR(10) = 'Manager',
-		@parenthier		hierarchyid,
-		@newHier		hierarchyid,
-		@maxHier		hierarchyid
-
-SELECT @parenthier = OrgPath
-FROM Stores.Employee
-WHERE EmployeeId = @Parent
-
-SELECT @maxHier = NULLIF(MAX(OrgPath), @parenthier)
-FROM Stores.Employee
-WHERE OrgPath.IsDescendantOf(@parenthier) = 1
-
-SELECT @newHier = @parenthier.GetDescendant(@maxHier, NULL)
-
-SELECT @EmpCode = [Stores].[fnGenerateEmployeeCode](@FirstName, @LastName)
-INSERT Stores.Employee (EmployeeCode, FirstName, LastName, OrgPath, Address1, StoreId, BloodGroup, IsManager, Designation)
-VALUES (@EmpCode, @FirstName, @LastName, @newHier, @Address1, @StoreId, @Blood, @IsMan, @Designation)</value>
   </data>
   <data name="MultiPhoneEmp_TestAction.SqlScript" xml:space="preserve">
     <value>/*
@@ -357,6 +290,548 @@ INNER JOIN Stores.Phone	p
 WHERE e.FirstName = 'Test'
 AND e.LastName = 'Test'
 ORDER BY p.PhoneNumber DESC</value>
+  </data>
+  <data name="MultiPhoneEmp_PretestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run before
+the test script is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @EmpCode		CHAR(5),
+		@FirstName		VARCHAR(50) = 'Test',
+		@LastName		VARCHAR(50) = 'Test',
+		@Parent			INT			= 1,
+		@Address1		VARCHAR(50) = 'Sample Address',
+		@StoreId		INT			= 2,
+		@Blood			CHAR(3)		= 'B+',
+		@IsMan			BIT			= 1,
+		@Designation	VARCHAR(10) = 'Manager',
+		@parenthier		hierarchyid,
+		@newHier		hierarchyid,
+		@maxHier		hierarchyid
+
+SELECT @parenthier = OrgPath
+FROM Stores.Employee
+WHERE EmployeeId = @Parent
+
+SELECT @maxHier = NULLIF(MAX(OrgPath), @parenthier)
+FROM Stores.Employee
+WHERE OrgPath.IsDescendantOf(@parenthier) = 1
+
+SELECT @newHier = @parenthier.GetDescendant(@maxHier, NULL)
+
+SELECT @EmpCode = [Stores].[fnGenerateEmployeeCode](@FirstName, @LastName)
+INSERT Stores.Employee (EmployeeCode, FirstName, LastName, OrgPath, Address1, StoreId, BloodGroup, IsManager, Designation)
+VALUES (@EmpCode, @FirstName, @LastName, @newHier, @Address1, @StoreId, @Blood, @IsMan, @Designation)</value>
+  </data>
+  <data name="MultiPhoneEmp_PosttestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run after 
+the test script is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @UniqueId	UNIQUEIDENTIFIER
+DECLARE @Phone AS TABLE
+(
+	PhoneId	INT
+)
+
+SELECT TOP 1 @UniqueId = EntityPhoneId
+FROM Stores.Employee
+WHERE FirstName = 'Test'
+AND LastName = 'Test'
+
+DELETE FROM Stores.EmployeePhone
+OUTPUT deleted.PhoneId INTO @Phone
+WHERE EntityPhoneId = @UniqueId
+
+DELETE FROM Stores.Phone
+WHERE PhoneId IN (SELECT PhoneId FROM @Phone)
+
+DELETE FROM Stores.Employee
+WHERE FirstName = 'Test'
+AND LastName = 'Test'</value>
+  </data>
+  <data name="ErrorWhenNoPri_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @PhoneXML	XML(Stores.PhoneXMLSchema),
+		@EntId		UNIQUEIDENTIFIER,
+		@RC			INT
+SET @PhoneXML = '&lt;PhoneNumbers&gt;
+&lt;Phone IsPrimary="0"&gt;9130089763&lt;/Phone&gt;
+&lt;Phone IsPrimary="0"&gt;8983879706&lt;/Phone&gt;
+&lt;/PhoneNumbers&gt;'
+SELECT @EntId = EntityPhoneId
+FROM Stores.Employee
+WHERE FirstName = 'Test'
+AND LastName = 'Test'
+
+EXEC @RC = Stores.uspAddPhoneNumbers	@Phone			=	@PhoneXML,
+										@EntityPhoneId	=	@EntId,
+										@IsStore		=	0
+
+SELECT @RC</value>
+  </data>
+  <data name="ErrorWhenNoPri_PretestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run before
+the test script is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @EmpCode		CHAR(5),
+		@FirstName		VARCHAR(50) = 'Test',
+		@LastName		VARCHAR(50) = 'Test',
+		@Parent			INT			= 1,
+		@Address1		VARCHAR(50) = 'Sample Address',
+		@StoreId		INT			= 2,
+		@Blood			CHAR(3)		= 'B+',
+		@IsMan			BIT			= 1,
+		@Designation	VARCHAR(10) = 'Manager',
+		@parenthier		hierarchyid,
+		@newHier		hierarchyid,
+		@maxHier		hierarchyid
+
+SELECT @parenthier = OrgPath
+FROM Stores.Employee
+WHERE EmployeeId = @Parent
+
+SELECT @maxHier = NULLIF(MAX(OrgPath), @parenthier)
+FROM Stores.Employee
+WHERE OrgPath.IsDescendantOf(@parenthier) = 1
+
+SELECT @newHier = @parenthier.GetDescendant(@maxHier, NULL)
+
+SELECT @EmpCode = [Stores].[fnGenerateEmployeeCode](@FirstName, @LastName)
+INSERT Stores.Employee (EmployeeCode, FirstName, LastName, OrgPath, Address1, StoreId, BloodGroup, IsManager, Designation)
+VALUES (@EmpCode, @FirstName, @LastName, @newHier, @Address1, @StoreId, @Blood, @IsMan, @Designation)</value>
+  </data>
+  <data name="ErrorWhenNoPri_PosttestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run after 
+the test script is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @UniqueId	UNIQUEIDENTIFIER
+DECLARE @Phone AS TABLE
+(
+	PhoneId	INT
+)
+
+SELECT TOP 1 @UniqueId = EntityPhoneId
+FROM Stores.Employee
+WHERE FirstName = 'Test'
+AND LastName = 'Test'
+
+DELETE FROM Stores.EmployeePhone
+OUTPUT deleted.PhoneId INTO @Phone
+WHERE EntityPhoneId = @UniqueId
+
+DELETE FROM Stores.Phone
+WHERE PhoneId IN (SELECT PhoneId FROM @Phone)
+
+DELETE FROM Stores.Employee
+WHERE FirstName = 'Test'
+AND LastName = 'Test'</value>
+  </data>
+  <data name="ErrorWhenMulPri_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @PhoneXML	XML(Stores.PhoneXMLSchema),
+		@EntId		UNIQUEIDENTIFIER,
+		@RC			INT
+SET @PhoneXML = '&lt;PhoneNumbers&gt;
+&lt;Phone IsPrimary="1"&gt;9130089763&lt;/Phone&gt;
+&lt;Phone IsPrimary="1"&gt;8983879706&lt;/Phone&gt;
+&lt;/PhoneNumbers&gt;'
+SELECT @EntId = EntityPhoneId
+FROM Stores.Employee
+WHERE FirstName = 'Test'
+AND LastName = 'Test'
+
+EXEC @RC = Stores.uspAddPhoneNumbers	@Phone			=	@PhoneXML,
+										@EntityPhoneId	=	@EntId,
+										@IsStore		=	0
+
+SELECT @RC</value>
+  </data>
+  <data name="ErrorWhenMulPri_PretestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run before
+the test script is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @EmpCode		CHAR(5),
+		@FirstName		VARCHAR(50) = 'Test',
+		@LastName		VARCHAR(50) = 'Test',
+		@Parent			INT			= 1,
+		@Address1		VARCHAR(50) = 'Sample Address',
+		@StoreId		INT			= 2,
+		@Blood			CHAR(3)		= 'B+',
+		@IsMan			BIT			= 1,
+		@Designation	VARCHAR(10) = 'Manager',
+		@parenthier		hierarchyid,
+		@newHier		hierarchyid,
+		@maxHier		hierarchyid
+
+SELECT @parenthier = OrgPath
+FROM Stores.Employee
+WHERE EmployeeId = @Parent
+
+SELECT @maxHier = NULLIF(MAX(OrgPath), @parenthier)
+FROM Stores.Employee
+WHERE OrgPath.IsDescendantOf(@parenthier) = 1
+
+SELECT @newHier = @parenthier.GetDescendant(@maxHier, NULL)
+
+SELECT @EmpCode = [Stores].[fnGenerateEmployeeCode](@FirstName, @LastName)
+INSERT Stores.Employee (EmployeeCode, FirstName, LastName, OrgPath, Address1, StoreId, BloodGroup, IsManager, Designation)
+VALUES (@EmpCode, @FirstName, @LastName, @newHier, @Address1, @StoreId, @Blood, @IsMan, @Designation)</value>
+  </data>
+  <data name="ErrorWhenMulPri_PosttestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run after 
+the test script is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @UniqueId	UNIQUEIDENTIFIER
+DECLARE @Phone AS TABLE
+(
+	PhoneId	INT
+)
+
+SELECT TOP 1 @UniqueId = EntityPhoneId
+FROM Stores.Employee
+WHERE FirstName = 'Test'
+AND LastName = 'Test'
+
+DELETE FROM Stores.EmployeePhone
+OUTPUT deleted.PhoneId INTO @Phone
+WHERE EntityPhoneId = @UniqueId
+
+DELETE FROM Stores.Phone
+WHERE PhoneId IN (SELECT PhoneId FROM @Phone)
+
+DELETE FROM Stores.Employee
+WHERE FirstName = 'Test'
+AND LastName = 'Test'</value>
+  </data>
+  <data name="ErrorWhenInvPh_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @PhoneXML	XML(Stores.PhoneXMLSchema),
+		@EntId		UNIQUEIDENTIFIER,
+		@RC			INT
+SET @PhoneXML = '&lt;PhoneNumbers&gt;
+&lt;Phone IsPrimary="1"&gt;9130089763&lt;/Phone&gt;
+&lt;Phone IsPrimary="1"&gt;898879706&lt;/Phone&gt;
+&lt;/PhoneNumbers&gt;'
+SELECT @EntId = EntityPhoneId
+FROM Stores.Employee
+WHERE FirstName = 'Test'
+AND LastName = 'Test'
+
+EXEC @RC = Stores.uspAddPhoneNumbers	@Phone			=	@PhoneXML,
+										@EntityPhoneId	=	@EntId,
+										@IsStore		=	0
+
+SELECT @RC</value>
+  </data>
+  <data name="ErrorWhenInvPh_PretestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run before
+the test script is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @EmpCode		CHAR(5),
+		@FirstName		VARCHAR(50) = 'Test',
+		@LastName		VARCHAR(50) = 'Test',
+		@Parent			INT			= 1,
+		@Address1		VARCHAR(50) = 'Sample Address',
+		@StoreId		INT			= 2,
+		@Blood			CHAR(3)		= 'B+',
+		@IsMan			BIT			= 1,
+		@Designation	VARCHAR(10) = 'Manager',
+		@parenthier		hierarchyid,
+		@newHier		hierarchyid,
+		@maxHier		hierarchyid
+
+SELECT @parenthier = OrgPath
+FROM Stores.Employee
+WHERE EmployeeId = @Parent
+
+SELECT @maxHier = NULLIF(MAX(OrgPath), @parenthier)
+FROM Stores.Employee
+WHERE OrgPath.IsDescendantOf(@parenthier) = 1
+
+SELECT @newHier = @parenthier.GetDescendant(@maxHier, NULL)
+
+SELECT @EmpCode = [Stores].[fnGenerateEmployeeCode](@FirstName, @LastName)
+INSERT Stores.Employee (EmployeeCode, FirstName, LastName, OrgPath, Address1, StoreId, BloodGroup, IsManager, Designation)
+VALUES (@EmpCode, @FirstName, @LastName, @newHier, @Address1, @StoreId, @Blood, @IsMan, @Designation)</value>
+  </data>
+  <data name="ErrorWhenInvPh_PosttestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run after 
+the test script is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @UniqueId	UNIQUEIDENTIFIER
+DECLARE @Phone AS TABLE
+(
+	PhoneId	INT
+)
+
+SELECT TOP 1 @UniqueId = EntityPhoneId
+FROM Stores.Employee
+WHERE FirstName = 'Test'
+AND LastName = 'Test'
+
+DELETE FROM Stores.EmployeePhone
+OUTPUT deleted.PhoneId INTO @Phone
+WHERE EntityPhoneId = @UniqueId
+
+DELETE FROM Stores.Phone
+WHERE PhoneId IN (SELECT PhoneId FROM @Phone)
+
+DELETE FROM Stores.Employee
+WHERE FirstName = 'Test'
+AND LastName = 'Test'</value>
+  </data>
+  <data name="MultiPhoneWIthCd_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @PhoneXML	XML(Stores.PhoneXMLSchema),
+		@EntId		UNIQUEIDENTIFIER,
+		@RC			INT
+SET @PhoneXML = '&lt;PhoneNumbers&gt;
+&lt;Phone IsPrimary="1"&gt;+919130089763&lt;/Phone&gt;
+&lt;Phone IsPrimary="0"&gt;+918983879706&lt;/Phone&gt;
+&lt;/PhoneNumbers&gt;'
+SELECT @EntId = EntityPhoneId
+FROM Stores.Employee
+WHERE FirstName = 'Test'
+AND LastName = 'Test'
+
+EXEC @RC = Stores.uspAddPhoneNumbers	@Phone			=	@PhoneXML,
+										@EntityPhoneId	=	@EntId,
+										@IsStore		=	0
+
+SELECT @RC
+SELECT CAST(p.PhoneNumber AS VARCHAR), CAST(p.IsPrimary AS VARCHAR)
+FROM Stores.Employee e
+INNER JOIN Stores.EmployeePhone ep
+	ON e.EntityPhoneId = ep.EntityPhoneId
+INNER JOIN Stores.Phone	p
+	ON ep.PhoneId = p.PhoneId
+WHERE e.FirstName = 'Test'
+AND e.LastName = 'Test'
+ORDER BY p.PhoneNumber DESC</value>
+  </data>
+  <data name="MultiPhoneWIthCd_PretestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run before
+the test script is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @EmpCode		CHAR(5),
+		@FirstName		VARCHAR(50) = 'Test',
+		@LastName		VARCHAR(50) = 'Test',
+		@Parent			INT			= 1,
+		@Address1		VARCHAR(50) = 'Sample Address',
+		@StoreId		INT			= 2,
+		@Blood			CHAR(3)		= 'B+',
+		@IsMan			BIT			= 1,
+		@Designation	VARCHAR(10) = 'Manager',
+		@parenthier		hierarchyid,
+		@newHier		hierarchyid,
+		@maxHier		hierarchyid
+
+SELECT @parenthier = OrgPath
+FROM Stores.Employee
+WHERE EmployeeId = @Parent
+
+SELECT @maxHier = NULLIF(MAX(OrgPath), @parenthier)
+FROM Stores.Employee
+WHERE OrgPath.IsDescendantOf(@parenthier) = 1
+
+SELECT @newHier = @parenthier.GetDescendant(@maxHier, NULL)
+
+SELECT @EmpCode = [Stores].[fnGenerateEmployeeCode](@FirstName, @LastName)
+INSERT Stores.Employee (EmployeeCode, FirstName, LastName, OrgPath, Address1, StoreId, BloodGroup, IsManager, Designation)
+VALUES (@EmpCode, @FirstName, @LastName, @newHier, @Address1, @StoreId, @Blood, @IsMan, @Designation)</value>
+  </data>
+  <data name="MultiPhoneWIthCd_PosttestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run after 
+the test script is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @UniqueId	UNIQUEIDENTIFIER
+DECLARE @Phone AS TABLE
+(
+	PhoneId	INT
+)
+
+SELECT TOP 1 @UniqueId = EntityPhoneId
+FROM Stores.Employee
+WHERE FirstName = 'Test'
+AND LastName = 'Test'
+
+DELETE FROM Stores.EmployeePhone
+OUTPUT deleted.PhoneId INTO @Phone
+WHERE EntityPhoneId = @UniqueId
+
+DELETE FROM Stores.Phone
+WHERE PhoneId IN (SELECT PhoneId FROM @Phone)
+
+DELETE FROM Stores.Employee
+WHERE FirstName = 'Test'
+AND LastName = 'Test'</value>
+  </data>
+  <data name="MultiStorPhone_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @PhoneXML	XML(Stores.PhoneXMLSchema),
+		@EntId		UNIQUEIDENTIFIER,
+		@RC			INT
+SET @PhoneXML = '&lt;PhoneNumbers&gt;
+&lt;Phone IsPrimary="1"&gt;+919130089763&lt;/Phone&gt;
+&lt;Phone IsPrimary="0"&gt;+918983879706&lt;/Phone&gt;
+&lt;/PhoneNumbers&gt;'
+SELECT @EntId = EntityPhoneId
+FROM Stores.Store
+WHERE StoreCode = 'STR04'
+
+EXEC @RC = Stores.uspAddPhoneNumbers	@Phone			=	@PhoneXML,
+										@EntityPhoneId	=	@EntId,
+										@IsStore		=	1
+
+SELECT @RC
+SELECT CAST(p.PhoneNumber AS VARCHAR), CAST(p.IsPrimary AS VARCHAR)
+FROM Stores.Store e
+INNER JOIN Stores.StorePhone ep
+	ON e.EntityPhoneId = ep.EntityPhoneId
+INNER JOIN Stores.Phone	p
+	ON ep.PhoneId = p.PhoneId
+WHERE e.StoreCode = 'STR04'
+ORDER BY p.PhoneNumber DESC</value>
+  </data>
+  <data name="MultiStorPhone_PretestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run before
+the test script is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+INSERT Stores.Store(StoreCode, StoreName, StoreAddress1, StoreAddress2, IsWarehouse, EntityPhoneId)
+VALUES ('STR04', 'Store 4 - Test', 'TestStore', 'TestStore', 0, NEWID())</value>
+  </data>
+  <data name="MultiStorPhone_PosttestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run after 
+the test script is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @UniqueId	UNIQUEIDENTIFIER
+DECLARE @Phone AS TABLE
+(
+	PhoneId	INT
+)
+
+SELECT TOP 1 @UniqueId = EntityPhoneId
+FROM Stores.Store
+WHERE StoreCode = 'STR04'
+
+DELETE FROM Stores.StorePhone
+OUTPUT deleted.PhoneId INTO @Phone
+WHERE EntityPhoneId = @UniqueId
+
+DELETE FROM Stores.Phone
+WHERE PhoneId IN (SELECT PhoneId FROM @Phone)
+
+DELETE FROM Stores.Store
+WHERE StoreCode = 'STR04'</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

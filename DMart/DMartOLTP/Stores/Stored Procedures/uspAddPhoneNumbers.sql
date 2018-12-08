@@ -29,19 +29,22 @@ BEGIN
 			INSERT @PhoneTable(PhoneNumber, IsPrimary)
 			SELECT T.c.value('.', 'VARCHAR(15)'),
 				   T.c.value('@IsPrimary', 'BIT')
-			FROM @Phone.nodes('/PhoneNumbers/Phone') T(c)
-
-			IF EXISTS(SELECT TOP 1 1 FROM @PhoneTable)
-			BEGIN
-				SET @ret = 0
-			END
-			--Transfer the control to catch block if more than one valid phone numbers are detected
-			IF ((SELECT COUNT(1) FROM @PhoneTable WHERE IsPrimary = 1) > 1)
-				THROW 50002,'More than one valid flag detected', 16;
-
+			FROM @Phone.nodes('/PhoneNumbers/Phone') T(c)		
+			
 			--Check the validity of Phone Numbers
 			UPDATE @PhoneTable
 			SET IsValid = Stores.fnValidatePhoneNumber(PhoneNumber)		
+
+			--Transfer the control to catch block if more than one valid phone numbers are detected
+			IF (((SELECT COUNT(1) FROM @PhoneTable WHERE IsValid = 1) >= 1) OR
+				((SELECT COUNT(1) FROM @PhoneTable WHERE IsPrimary = 1) <> 1))
+				THROW 50002,'More than one valid flag detected', 16;
+
+			--SET return to 0 when atleast one valid phone detected
+			IF EXISTS(SELECT TOP 1 1 FROM @PhoneTable WHERE IsValid = 0)
+			BEGIN
+				SET @ret = 0
+			END
 
 			--Insert into the Phone table and get the PhoneIds and insert to Employee or Stores Phone
 			INSERT INTO Stores.Phone (PhoneNumber, IsPrimary)
@@ -67,7 +70,7 @@ BEGIN
 		END TRY
 		BEGIN CATCH
 			ROLLBACK TRAN insPhone
-			RAISERROR(50001, 19, 1, 'Stores.uspAddPhoneNumbers')
+			RAISERROR(50001, 19, 1, 'Stores.uspAddPhoneNumbers') WITH LOG
 		END CATCH
 		RETURN @ret
 END
