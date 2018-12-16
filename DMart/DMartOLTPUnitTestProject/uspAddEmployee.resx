@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddEmpWithSinPh_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspAddEmployee
+DECLARE @Employee AS XML(CONTENT [Stores].[EmployeeXMLSchema]);
+SET @Employee = '
+&lt;Employee IsManager="1"  Designation="Manager" BloodGroup="O+" StoreId="1"&gt;
+	&lt;FirstName&gt;TestFN&lt;/FirstName&gt;
+	&lt;LastName&gt;TestLN&lt;/LastName&gt;
+	&lt;ReportingManager&gt;1&lt;/ReportingManager&gt;
+	&lt;Address&gt;
+		&lt;AddressLine1&gt;Address1&lt;/AddressLine1&gt;
+		&lt;AddressLine2&gt;Address2&lt;/AddressLine2&gt;
+		&lt;AddressLine3&gt;Address3&lt;/AddressLine3&gt;
+	&lt;/Address&gt;
+	&lt;PhoneNumbers&gt;
+		&lt;Phone IsPrimary="1"&gt;+918983879706&lt;/Phone&gt;
+	&lt;/PhoneNumbers&gt;
+&lt;/Employee&gt;'
+
+EXECUTE [Stores].[uspAddEmployee] @Employee;
+
+SELECT COUNT(1) AS Cnt
+FROM Stores.Employee e
+INNER JOIN Stores.EmployeePhone ep
+	ON e.EntityPhoneId = ep.EntityPhoneId
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE LastName = 'TestLN'</value>
+  </data>
+  <data name="testCleanupAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run after 
+each test method (unit test) in this test class is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @EmpPhones AS TABLE
+(
+	EmpId		INT,
+	PhoneEntId	UNIQUEIDENTIFIER
+)
+DECLARE @PhoneId AS TABLE
+(
+	PhoneId		INT
+)
+DECLARE @MaxPhoneId	INT
+
+INSERT @EmpPhones (EmpId, PhoneEntId)
+SELECT EmployeeId, EntityPhoneId
+FROM Stores.Employee
+WHERE EmployeeId &gt; 1
+
+DELETE ep
+OUTPUT deleted.PhoneId INTO @PhoneId
+FROM Stores.EmployeePhone ep
+INNER JOIN @EmpPhones eph
+	ON ep.EntityPhoneId = eph.PhoneEntId
+
+DELETE FROM Stores.Phone
+WHERE PhoneId IN (
+SELECT PhoneId
+FROM @PhoneId
+)
+
+DELETE FROM Stores.Employee
+WHERE EmployeeId &gt; 1
+
+DBCC CHECKIDENT ('Stores.Employee', RESEED, 1)
+
+SELECT @MaxPhoneId = MAX(PhoneId)
+FROM Stores.Phone
+
+DBCC CHECKIDENT ('Stores.Phone', RESEED, @MaxPhoneId)</value>
+  </data>
+  <data name="AddEmpWithMulPh_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspAddEmployee
+DECLARE @Employee AS XML(CONTENT [Stores].[EmployeeXMLSchema]);
+SET @Employee = '
+&lt;Employee IsManager="1"  Designation="Manager" BloodGroup="O+" StoreId="1"&gt;
+	&lt;FirstName&gt;TestFN&lt;/FirstName&gt;
+	&lt;LastName&gt;TestLN&lt;/LastName&gt;
+	&lt;ReportingManager&gt;1&lt;/ReportingManager&gt;
+	&lt;Address&gt;
+		&lt;AddressLine1&gt;Address1&lt;/AddressLine1&gt;
+		&lt;AddressLine2&gt;Address2&lt;/AddressLine2&gt;
+		&lt;AddressLine3&gt;Address3&lt;/AddressLine3&gt;
+	&lt;/Address&gt;
+	&lt;PhoneNumbers&gt;
+		&lt;Phone IsPrimary="1"&gt;+918983879706&lt;/Phone&gt;
+		&lt;Phone IsPrimary="0"&gt;+919944577980&lt;/Phone&gt;
+		&lt;Phone IsPrimary="0"&gt;+919880065456&lt;/Phone&gt;
+	&lt;/PhoneNumbers&gt;
+&lt;/Employee&gt;'
+
+EXECUTE [Stores].[uspAddEmployee] @Employee;
+
+SELECT COUNT(1) AS Cnt
+FROM Stores.Employee e
+INNER JOIN Stores.EmployeePhone ep
+	ON e.EntityPhoneId = ep.EntityPhoneId
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE LastName = 'TestLN'</value>
+  </data>
+  <data name="AddEmpWithInvPh_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspAddEmployee
+DECLARE @Employee AS XML(CONTENT [Stores].[EmployeeXMLSchema]);
+SET @Employee = '
+&lt;Employee IsManager="1"  Designation="Manager" BloodGroup="O+" StoreId="1"&gt;
+	&lt;FirstName&gt;TestFN&lt;/FirstName&gt;
+	&lt;LastName&gt;TestLN&lt;/LastName&gt;
+	&lt;ReportingManager&gt;1&lt;/ReportingManager&gt;
+	&lt;Address&gt;
+		&lt;AddressLine1&gt;Address1&lt;/AddressLine1&gt;
+		&lt;AddressLine2&gt;Address2&lt;/AddressLine2&gt;
+		&lt;AddressLine3&gt;Address3&lt;/AddressLine3&gt;
+	&lt;/Address&gt;
+	&lt;PhoneNumbers&gt;
+		&lt;Phone IsPrimary="1"&gt;+918983879706&lt;/Phone&gt;
+		&lt;Phone IsPrimary="0"&gt;+919A44577980&lt;/Phone&gt;
+		&lt;Phone IsPrimary="0"&gt;+919880065456&lt;/Phone&gt;
+	&lt;/PhoneNumbers&gt;
+&lt;/Employee&gt;'
+
+EXECUTE [Stores].[uspAddEmployee] @Employee;
+</value>
+  </data>
+  <data name="AddNonManagerWithPh_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspAddEmployee
+DECLARE @Employee AS XML(CONTENT [Stores].[EmployeeXMLSchema]);
+SET @Employee = '
+&lt;Employee IsManager="1"  Designation="Manager" BloodGroup="O+" StoreId="1"&gt;
+	&lt;FirstName&gt;TestFN&lt;/FirstName&gt;
+	&lt;LastName&gt;TestLN&lt;/LastName&gt;
+	&lt;ReportingManager&gt;1&lt;/ReportingManager&gt;
+	&lt;Address&gt;
+		&lt;AddressLine1&gt;Address1&lt;/AddressLine1&gt;
+		&lt;AddressLine2&gt;Address2&lt;/AddressLine2&gt;
+		&lt;AddressLine3&gt;Address3&lt;/AddressLine3&gt;
+	&lt;/Address&gt;
+	&lt;PhoneNumbers&gt;
+		&lt;Phone IsPrimary="1"&gt;+918983879706&lt;/Phone&gt;		
+	&lt;/PhoneNumbers&gt;
+&lt;/Employee&gt;'
+
+EXECUTE [Stores].[uspAddEmployee] @Employee;
+
+SET @Employee = '
+&lt;Employee IsManager="0"  Designation="Junior" BloodGroup="AB+" StoreId="1"&gt;
+	&lt;FirstName&gt;TestFN2&lt;/FirstName&gt;
+	&lt;LastName&gt;TestLN2&lt;/LastName&gt;
+	&lt;ReportingManager&gt;2&lt;/ReportingManager&gt;
+	&lt;Address&gt;
+		&lt;AddressLine1&gt;Address1&lt;/AddressLine1&gt;
+		&lt;AddressLine2&gt;Address2&lt;/AddressLine2&gt;
+		&lt;AddressLine3&gt;Address3&lt;/AddressLine3&gt;
+	&lt;/Address&gt;
+	&lt;PhoneNumbers&gt;
+		&lt;Phone IsPrimary="1"&gt;+917778889991&lt;/Phone&gt;		
+	&lt;/PhoneNumbers&gt;
+&lt;/Employee&gt;'
+
+EXECUTE [Stores].[uspAddEmployee] @Employee;
+
+SELECT COUNT(1) AS Cnt
+FROM Stores.Employee e
+INNER JOIN Stores.EmployeePhone ep
+	ON e.EntityPhoneId = ep.EntityPhoneId
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE EmployeeId &gt; 1</value>
+  </data>
+  <data name="AddSenorLevelEmp_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspAddEmployee
+DECLARE @Employee AS XML(CONTENT [Stores].[EmployeeXMLSchema]);
+SET @Employee = '
+&lt;Employee IsManager="1"  Designation="Manager" BloodGroup="O+" StoreId="1"&gt;
+	&lt;FirstName&gt;TestFN&lt;/FirstName&gt;
+	&lt;LastName&gt;TestLN&lt;/LastName&gt;
+	&lt;ReportingManager&gt;1&lt;/ReportingManager&gt;
+	&lt;Address&gt;
+		&lt;AddressLine1&gt;Address1&lt;/AddressLine1&gt;
+		&lt;AddressLine2&gt;Address2&lt;/AddressLine2&gt;
+		&lt;AddressLine3&gt;Address3&lt;/AddressLine3&gt;
+	&lt;/Address&gt;
+	&lt;PhoneNumbers&gt;
+		&lt;Phone IsPrimary="1"&gt;+918983879706&lt;/Phone&gt;		
+	&lt;/PhoneNumbers&gt;
+&lt;/Employee&gt;'
+
+EXECUTE [Stores].[uspAddEmployee] @Employee;
+
+SET @Employee = '
+&lt;Employee IsManager="0"  Designation="Junior" BloodGroup="AB+" StoreId="1"&gt;
+	&lt;FirstName&gt;TestFN2&lt;/FirstName&gt;
+	&lt;LastName&gt;TestLN2&lt;/LastName&gt;
+	&lt;ReportingManager&gt;2&lt;/ReportingManager&gt;
+	&lt;Address&gt;
+		&lt;AddressLine1&gt;Address1&lt;/AddressLine1&gt;
+		&lt;AddressLine2&gt;Address2&lt;/AddressLine2&gt;
+		&lt;AddressLine3&gt;Address3&lt;/AddressLine3&gt;
+	&lt;/Address&gt;
+	&lt;PhoneNumbers&gt;
+		&lt;Phone IsPrimary="1"&gt;+917778889991&lt;/Phone&gt;		
+	&lt;/PhoneNumbers&gt;
+&lt;/Employee&gt;'
+
+EXECUTE [Stores].[uspAddEmployee] @Employee;
+
+SET @Employee = '
+&lt;Employee IsManager="0"  Designation="Senior" BloodGroup="AB+" StoreId="1"&gt;
+	&lt;FirstName&gt;TestFN3&lt;/FirstName&gt;
+	&lt;LastName&gt;TestLN3&lt;/LastName&gt;
+	&lt;ReportingManager&gt;2&lt;/ReportingManager&gt;
+	&lt;Address&gt;
+		&lt;AddressLine1&gt;Address1&lt;/AddressLine1&gt;
+		&lt;AddressLine2&gt;Address2&lt;/AddressLine2&gt;
+		&lt;AddressLine3&gt;Address3&lt;/AddressLine3&gt;
+	&lt;/Address&gt;
+	&lt;PhoneNumbers&gt;
+		&lt;Phone IsPrimary="1"&gt;+918887889991&lt;/Phone&gt;		
+		&lt;Phone IsPrimary="0"&gt;+918887889992&lt;/Phone&gt;
+	&lt;/PhoneNumbers&gt;
+&lt;/Employee&gt;'
+
+EXECUTE [Stores].[uspAddEmployee] @Employee;
+
+SELECT COUNT(1) AS Cnt
+FROM Stores.Employee e
+INNER JOIN Stores.EmployeePhone ep
+	ON e.EntityPhoneId = ep.EntityPhoneId
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE EmployeeId &gt; 1</value>
+  </data>
+  <data name="AddJunRepSen_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspAddEmployee
+DECLARE @Employee AS XML(CONTENT [Stores].[EmployeeXMLSchema]);
+SET @Employee = '
+&lt;Employee IsManager="1"  Designation="Manager" BloodGroup="O+" StoreId="1"&gt;
+	&lt;FirstName&gt;TestFN&lt;/FirstName&gt;
+	&lt;LastName&gt;TestLN&lt;/LastName&gt;
+	&lt;ReportingManager&gt;1&lt;/ReportingManager&gt;
+	&lt;Address&gt;
+		&lt;AddressLine1&gt;Address1&lt;/AddressLine1&gt;
+		&lt;AddressLine2&gt;Address2&lt;/AddressLine2&gt;
+		&lt;AddressLine3&gt;Address3&lt;/AddressLine3&gt;
+	&lt;/Address&gt;
+	&lt;PhoneNumbers&gt;
+		&lt;Phone IsPrimary="1"&gt;+918983879706&lt;/Phone&gt;		
+	&lt;/PhoneNumbers&gt;
+&lt;/Employee&gt;'
+
+EXECUTE [Stores].[uspAddEmployee] @Employee;
+
+SET @Employee = '
+&lt;Employee IsManager="0"  Designation="Junior" BloodGroup="AB+" StoreId="1"&gt;
+	&lt;FirstName&gt;TestFN2&lt;/FirstName&gt;
+	&lt;LastName&gt;TestLN2&lt;/LastName&gt;
+	&lt;ReportingManager&gt;2&lt;/ReportingManager&gt;
+	&lt;Address&gt;
+		&lt;AddressLine1&gt;Address1&lt;/AddressLine1&gt;
+		&lt;AddressLine2&gt;Address2&lt;/AddressLine2&gt;
+		&lt;AddressLine3&gt;Address3&lt;/AddressLine3&gt;
+	&lt;/Address&gt;
+	&lt;PhoneNumbers&gt;
+		&lt;Phone IsPrimary="1"&gt;+917778889991&lt;/Phone&gt;		
+	&lt;/PhoneNumbers&gt;
+&lt;/Employee&gt;'
+
+EXECUTE [Stores].[uspAddEmployee] @Employee;
+
+SET @Employee = '
+&lt;Employee IsManager="0"  Designation="Senior" BloodGroup="AB+" StoreId="1"&gt;
+	&lt;FirstName&gt;TestFN3&lt;/FirstName&gt;
+	&lt;LastName&gt;TestLN3&lt;/LastName&gt;
+	&lt;ReportingManager&gt;3&lt;/ReportingManager&gt;
+	&lt;Address&gt;
+		&lt;AddressLine1&gt;Address1&lt;/AddressLine1&gt;
+		&lt;AddressLine2&gt;Address2&lt;/AddressLine2&gt;
+		&lt;AddressLine3&gt;Address3&lt;/AddressLine3&gt;
+	&lt;/Address&gt;
+	&lt;PhoneNumbers&gt;
+		&lt;Phone IsPrimary="1"&gt;+918887889991&lt;/Phone&gt;		
+		&lt;Phone IsPrimary="0"&gt;+918887889992&lt;/Phone&gt;
+	&lt;/PhoneNumbers&gt;
+&lt;/Employee&gt;'
+
+EXECUTE [Stores].[uspAddEmployee] @Employee;</value>
+  </data>
+  <data name="AddEmpWithoutFnLn_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @Employee AS XML(CONTENT [Stores].[EmployeeXMLSchema]);
+SET @Employee = '
+&lt;Employee IsManager="1"  Designation="Manager" BloodGroup="O+" StoreId="1"&gt;
+	&lt;FirstName&gt;&lt;/FirstName&gt;
+	&lt;LastName&gt;&lt;/LastName&gt;
+	&lt;ReportingManager&gt;1&lt;/ReportingManager&gt;
+	&lt;Address&gt;
+		&lt;AddressLine1&gt;Address1&lt;/AddressLine1&gt;
+		&lt;AddressLine2&gt;Address2&lt;/AddressLine2&gt;
+		&lt;AddressLine3&gt;Address3&lt;/AddressLine3&gt;
+	&lt;/Address&gt;
+	&lt;PhoneNumbers&gt;
+		&lt;Phone IsPrimary="1"&gt;+918983879706&lt;/Phone&gt;
+	&lt;/PhoneNumbers&gt;
+&lt;/Employee&gt;'
+
+EXECUTE [Stores].[uspAddEmployee] @Employee;</value>
+  </data>
+  <data name="AddEmpWitInvMan_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @Employee AS XML(CONTENT [Stores].[EmployeeXMLSchema]);
+SET @Employee = '
+&lt;Employee IsManager="1"  Designation="Manager" BloodGroup="O+" StoreId="1"&gt;
+	&lt;FirstName&gt;TestFN&lt;/FirstName&gt;
+	&lt;LastName&gt;TestLN&lt;/LastName&gt;
+	&lt;ReportingManager&gt;2&lt;/ReportingManager&gt;
+	&lt;Address&gt;
+		&lt;AddressLine1&gt;Address1&lt;/AddressLine1&gt;
+		&lt;AddressLine2&gt;Address2&lt;/AddressLine2&gt;
+		&lt;AddressLine3&gt;Address3&lt;/AddressLine3&gt;
+	&lt;/Address&gt;
+	&lt;PhoneNumbers&gt;
+		&lt;Phone IsPrimary="1"&gt;+918983879706&lt;/Phone&gt;		
+	&lt;/PhoneNumbers&gt;
+&lt;/Employee&gt;'
+
+EXECUTE [Stores].[uspAddEmployee] @Employee;</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+</root>

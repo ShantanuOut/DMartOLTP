@@ -62,6 +62,9 @@
       <SubType>Designer</SubType>
     </Compile>
     <Compile Include="SqlDatabaseSetup.cs" />
+    <Compile Include="uspAddEmployee.cs">
+      <SubType>Designer</SubType>
+    </Compile>
     <Compile Include="uspAddPhoneNumbers.cs">
       <SubType>Designer</SubType>
     </Compile>
@@ -76,6 +79,9 @@
   <ItemGroup>
     <EmbeddedResource Include="fnGenerateEmployeeCode.resx">
       <DependentUpon>fnGenerateEmployeeCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uspAddEmployee.resx">
+      <DependentUpon>uspAddEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="uspAddPhoneNumbers.resx">
       <DependentUpon>uspAddPhoneNumbers.cs</DependentUpon>

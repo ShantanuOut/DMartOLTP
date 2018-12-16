@@ -15,12 +15,20 @@ BEGIN
 			@newChild		hierarchyid,
 			@idoc			INT,
 			@EntityPhoneId	UNIQUEIDENTIFIER,
-			@PhoneXML		XML(Stores.PhoneXMLSchema)
+			@PhoneXML		XML(Stores.PhoneXMLSchema),
+			@inp			VARCHAR(MAX)
+
+	DECLARE @insertedData AS TABLE
+	(
+		FirstName		VARCHAR(50),
+		LastName		VARCHAR(50)
+	)
 	
 	BEGIN TRAN insEmployee
 		BEGIN TRY
 			--Loads the XML document in memory and creates a DOM
-			EXEC sp_xml_preparedocument @idoc OUTPUT, @Employee
+			SET @inp = CAST(@Employee AS VARCHAR(MAX))
+			EXEC sp_xml_preparedocument @idoc OUTPUT, @inp
 
 			SELECT @ManagerId = ManagerId
 			FROM OPENXML(@idoc, 'Employee')
@@ -29,16 +37,21 @@ BEGIN
 			SELECT @ManagerOrgPath = OrgPath
 			FROM Stores.Employee
 			WHERE EmployeeId = @ManagerId
+			AND IsManager = 1
+
+			IF(@ManagerOrgPath IS NULL)
+				THROW 500002, 'Invalid Manager', 16;
 	
 			SELECT @currentChild = NULLIF(MAX(OrgPath), @ManagerOrgPath)
 			FROM Stores.Employee
 			WHERE OrgPath.IsDescendantOf(@ManagerOrgPath) = 1
 
-			SET @newChild = @currentChild.GetDescendant(@currentChild, NULL)
+			SET @newChild = @ManagerOrgPath.GetDescendant(@currentChild, NULL)
 
 			SET @EntityPhoneId = NEWID()
 	
 			INSERT INTO Stores.Employee(EmployeeCode, FirstName, LastName, OrgPath, EntityPhoneId, Address1, Address2, Address3, StoreId, BloodGroup, IsManager, Designation)	
+			OUTPUT inserted.FirstName, inserted.LastName INTO @insertedData
 			SELECT
 				Stores.fnGenerateEmployeeCode(ISNULL(FirstName, ''), ISNULL(LastName, '')),
 				FirstName,
@@ -67,6 +80,9 @@ BEGIN
 
 			--Remove the XML from Memory
 			EXEC sp_xml_removedocument @idoc
+
+			IF EXISTS (SELECT TOP 1 1 FROM @insertedData WHERE ISNULL(FirstName, '') = '' OR ISNULL(LastName, '') = '')
+				THROW 500002, 'Invalid First or Last Name', 16;
 
 			SELECT @PhoneXML = T.c.query('.')
 			FROM @Employee.nodes('Employee/PhoneNumbers') T(c)

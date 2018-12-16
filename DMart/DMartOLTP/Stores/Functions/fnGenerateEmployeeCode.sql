@@ -21,15 +21,15 @@ BEGIN
 
 	WHILE EXISTS(SELECT TOP 1 1 FROM Stores.Employee WHERE EmployeeCode = @EmpCode)
 	BEGIN
-		IF (@Counter < 10)
+		IF ((@Counter < 10) AND (@FirstName <> '' OR @LastName <> ''))
 		BEGIN
 			SET @EmpCode = SUBSTRING(@FirstName+@LastName, @Counter, 6)
 		END
-		ELSE IF(@Counter > 10 AND @Counter < 20)
+		ELSE IF((@Counter > 10 AND @Counter < 20) AND (@FirstName <> '' OR @LastName <> ''))
 		BEGIN
 			SET @EmpCode = SUBSTRING(@LastName+@FirstName, @Counter, 6)
 		END
-		ELSE IF(@Counter > 20 AND @Counter < 30)
+		ELSE IF((@Counter > 20 AND @Counter < 30) AND (@FirstName <> '' OR @LastName <> ''))
 		BEGIN
 			SET @EmpCode = SUBSTRING(REVERSE(@LastName)+REVERSE(@FirstName), @Counter, 6)
 		END
