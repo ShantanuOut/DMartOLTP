@@ -70,7 +70,7 @@ BEGIN
 		END TRY
 		BEGIN CATCH
 			ROLLBACK TRAN insPhone
-			RAISERROR(50001, 19, 1, 'Stores.uspAddPhoneNumbers') WITH LOG
+			RAISERROR(50001, 19, 1, 'Stores.uspAddPhoneNumbers', '') WITH LOG
 		END CATCH
 		RETURN @ret
 END

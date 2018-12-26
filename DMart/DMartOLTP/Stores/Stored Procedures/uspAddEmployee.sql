@@ -95,6 +95,6 @@ BEGIN
 		END TRY
 		BEGIN CATCH
 			ROLLBACK TRAN insEmployee
-			RAISERROR(50001, 19, 1, 'Stores.uspAddEmployee') WITH LOG
+			RAISERROR(50001, 19, 1, 'Stores.uspAddEmployee', '') WITH LOG
 		END CATCH
 END
