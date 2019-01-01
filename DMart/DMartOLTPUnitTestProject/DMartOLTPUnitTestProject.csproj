@@ -71,6 +71,9 @@
     <Compile Include="uspRemovePhoneNumber.cs">
       <SubType>Designer</SubType>
     </Compile>
+    <Compile Include="uspUpdatePhoneNumber.cs">
+      <SubType>Designer</SubType>
+    </Compile>
     <Compile Include="ValidatePhoneNumber.cs">
       <SubType>Designer</SubType>
     </Compile>
@@ -91,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="uspRemovePhoneNumber.resx">
       <DependentUpon>uspRemovePhoneNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uspUpdatePhoneNumber.resx">
+      <DependentUpon>uspUpdatePhoneNumber.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ValidatePhoneNumber.resx">
       <DependentUpon>ValidatePhoneNumber.cs</DependentUpon>

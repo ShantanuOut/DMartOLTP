@@ -125,6 +125,8 @@
     <Build Include="Stores\Stored Procedures\uspValidatePhoneNumbersToRemove.sql" />
     <Build Include="Stores\Functions\fnGetStoresPhoneData.sql" />
     <Build Include="Stores\Types\Table Type\PhoneTable.sql" />
+    <Build Include="Stores\Stored Procedures\uspUpdatePhoneNumber.sql" />
+    <Build Include="Stores\Types\XML Schema Collections\UpdPhoneXMLSchema.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DMartOLTP.refactorlog" />

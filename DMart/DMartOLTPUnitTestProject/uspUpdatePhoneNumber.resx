@@ -1,0 +1,953 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EmpSingNonPUpd_1_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspUpdatePhoneNumber
+DECLARE @EntityPhoneId AS UNIQUEIDENTIFIER, @IsStore AS BIT, @PhoneUpdXML AS XML(CONTENT [Stores].[UpdPhoneXMLSchema]);
+DECLARE @PhoneId INT, @PhoneNumber VARCHAR(100);
+
+SELECT @EntityPhoneId = EntityPhoneId,
+       @IsStore = 0
+FROM Stores.Employee
+WHERE FirstName = 'TestFN'
+AND LastName = 'TestFN'
+
+IF (@IsStore = 1)
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.StorePhone sp
+	INNER JOIN Stores.Phone p
+		ON sp.PhoneId = p.PhoneId
+	WHERE sp.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+ELSE
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.EmployeePhone ep
+	INNER JOIN Stores.Phone p
+		ON ep.PhoneId = p.PhoneId
+	WHERE ep.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+
+SELECT @PhoneNumber = MIN(PhoneNumber)
+FROM Stores.EmployeePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE ep.EntityPhoneId = @EntityPhoneId
+AND IsPrimary = 0
+
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887776')
+
+SELECT @PhoneId = p.PhoneId
+FROM Stores.EmployeePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE EntityPhoneId = @EntityPhoneId
+AND PhoneNumber = @PhoneNumber
+
+EXECUTE [Stores].[uspUpdatePhoneNumber] @EntityPhoneId, @IsStore, @PhoneUpdXML;
+
+SELECT PhoneNumber
+FROM Stores.Phone 
+WHERE PhoneId = @PhoneId
+
+SELECT PhoneNumber
+FROM Stores.Phone
+WHERE PhoneId IN (SELECT PhoneId FROM Stores.EmployeePhone WHERE EntityPhoneId = @EntityPhoneId)
+AND PhoneNumber = @PhoneNumber</value>
+  </data>
+  <data name="testInitializeAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run before 
+each test method (unit test) in this test class is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @Employee XML(Stores.EmployeeXMLSchema) = 
+'&lt;Employee IsManager="1"  Designation="Manager" BloodGroup="O+" StoreId="1"&gt;
+	&lt;FirstName&gt;TestFN&lt;/FirstName&gt;
+	&lt;LastName&gt;TestLN&lt;/LastName&gt;
+	&lt;ReportingManager&gt;1&lt;/ReportingManager&gt;
+	&lt;Address&gt;
+		&lt;AddressLine1&gt;Address1&lt;/AddressLine1&gt;
+		&lt;AddressLine2&gt;Address2&lt;/AddressLine2&gt;
+		&lt;AddressLine3&gt;Address3&lt;/AddressLine3&gt;
+	&lt;/Address&gt;
+	&lt;PhoneNumbers&gt;
+		&lt;Phone IsPrimary="1"&gt;+918983879706&lt;/Phone&gt;
+		&lt;Phone IsPrimary="0"&gt;+919944577980&lt;/Phone&gt;
+		&lt;Phone IsPrimary="0"&gt;+919880065456&lt;/Phone&gt;
+	&lt;/PhoneNumbers&gt;
+&lt;/Employee&gt;'
+DECLARE @EntId	UNIQUEIDENTIFIER
+DECLARE @PhoneIds	AS TABLE
+(
+	PhoneId		INT
+)
+
+--Insert Employee Data
+EXECUTE [Stores].[uspAddEmployee] @Employee;
+
+--Insert Store Data
+INSERT Stores.Store (StoreCode, StoreName, StoreAddress1, StoreAddress2, IsWarehouse, EntityPhoneId)
+VALUES ('STR04', 'Test Store', 'Add Test - 1', 'Add Test -2', 0, NEWID())
+
+SELECT @EntId = EntityPhoneId
+FROM Stores.Store
+WHERE StoreCode = 'STR04'
+
+INSERT Stores.Phone (PhoneNumber, IsPrimary)
+OUTPUT inserted.PhoneId INTO @PhoneIds
+VALUES	('7775556661', 1),
+		('9775556661', 0),
+		('8775556661', 0)
+
+INSERT INTO Stores.StorePhone
+SELECT PhoneId, @EntId
+FROM @PhoneIds
+
+SELECT p.*
+FROM Stores.Employee e
+INNER JOIN Stores.EmployeePhone ep
+	ON e.EntityPhoneId = ep.EntityPhoneId
+INNER JOIN Stores.Phone p
+	ON p.PhoneId = ep.PhoneId
+WHERE e.LastName = 'TestLN'
+AND e.FirstName = 'TestFN'
+
+SELECT *
+FROM Stores.Store s
+INNER JOIN Stores.StorePhone sp
+	ON s.EntityPhoneId = sp.EntityPhoneId
+INNER JOIN Stores.Phone p
+	ON sp.PhoneId = p.PhoneId
+WHERE s.StoreCode = 'STR04'</value>
+  </data>
+  <data name="testCleanupAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run after 
+each test method (unit test) in this test class is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @maxId	INT = 0
+
+DELETE FROM Stores.EmployeePhone 
+WHERE PhoneId &gt; 12
+
+DELETE FROM Stores.StorePhone
+WHERE PhoneId &gt; 12
+
+DELETE FROM Stores.Phone
+WHERE PhoneId &gt; 12
+
+DELETE FROM Stores.Store
+WHERE StoreId &gt; 4
+
+DELETE FROM Stores.Employee
+WHERE EmployeeId &gt; 1
+
+SELECT @maxId = MAX(PhoneId)
+FROM Stores.Phone
+
+DBCC CHECKIDENT ('Stores.Phone', RESEED, @maxId)
+
+SELECT @maxId = MAX(EmployeeId)
+FROM Stores.Employee
+
+DBCC CHECKIDENT ('Stores.Employee', RESEED, @maxId)
+
+SELECT @maxId = MAX(StoreId)
+FROM Stores.Store
+
+DBCC CHECKIDENT ('Stores.Store', RESEED, @maxId)</value>
+  </data>
+  <data name="StrSingNonPUpd_2_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspUpdatePhoneNumber
+DECLARE @EntityPhoneId AS UNIQUEIDENTIFIER, @IsStore AS BIT, @PhoneUpdXML AS XML(CONTENT [Stores].[UpdPhoneXMLSchema]);
+DECLARE @PhoneId INT, @PhoneNumber VARCHAR(100);
+
+SELECT @EntityPhoneId = EntityPhoneId,
+       @IsStore = 1
+FROM Stores.Store
+WHERE StoreCode = 'STR04'
+
+IF (@IsStore = 1)
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.StorePhone sp
+	INNER JOIN Stores.Phone p
+		ON sp.PhoneId = p.PhoneId
+	WHERE sp.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+ELSE
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.EmployeePhone ep
+	INNER JOIN Stores.Phone p
+		ON ep.PhoneId = p.PhoneId
+	WHERE ep.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+
+SELECT @PhoneNumber = MIN(PhoneNumber)
+FROM Stores.StorePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE ep.EntityPhoneId = @EntityPhoneId
+AND IsPrimary = 0
+
+SELECT @PhoneId = p.PhoneId
+FROM Stores.StorePhone sp
+INNER JOIN Stores.Phone p
+	ON sp.PhoneId = p.PhoneId
+WHERE sp.EntityPhoneId = @EntityPhoneId
+AND PhoneNumber = @PhoneNumber
+
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887776')
+
+EXECUTE [Stores].[uspUpdatePhoneNumber] @EntityPhoneId, @IsStore, @PhoneUpdXML;
+
+SELECT PhoneNumber
+FROM Stores.Phone 
+WHERE PhoneId = @PhoneId
+
+SELECT PhoneNumber
+FROM Stores.Phone
+WHERE PhoneId IN (SELECT PhoneId FROM Stores.StorePhone WHERE EntityPhoneId = @EntityPhoneId)
+AND PhoneNumber = @PhoneNumber</value>
+  </data>
+  <data name="EmpMulNonPUpd_3_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspUpdatePhoneNumber
+DECLARE @EntityPhoneId AS UNIQUEIDENTIFIER, @IsStore AS BIT, @PhoneUpdXML AS XML(CONTENT [Stores].[UpdPhoneXMLSchema]);
+DECLARE @PhoneTab AS TABLE
+(
+	PhoneId		INT,
+	PhoneNumber	VARCHAR(100)
+);
+DECLARE @PhoneNumber VARCHAR(100);
+DECLARE @bit BIT = 0;
+
+SELECT @EntityPhoneId = EntityPhoneId,
+       @IsStore = 0
+FROM Stores.Employee
+WHERE FirstName = 'TestFN'
+AND LastName = 'TestFN'
+
+IF (@IsStore = 1)
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.StorePhone sp
+	INNER JOIN Stores.Phone p
+		ON sp.PhoneId = p.PhoneId
+	WHERE sp.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+ELSE
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.EmployeePhone ep
+	INNER JOIN Stores.Phone p
+		ON ep.PhoneId = p.PhoneId
+	WHERE ep.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+
+INSERT @PhoneTab (PhoneNumber, PhoneId)
+SELECT TOP 2 PhoneNumber, p.PhoneId
+FROM Stores.EmployeePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE ep.EntityPhoneId = @EntityPhoneId
+AND IsPrimary = 0
+
+DECLARE phone_cursor CURSOR FOR
+SELECT PhoneNumber FROM @PhoneTab
+OPEN phone_cursor
+
+FETCH NEXT FROM phone_cursor INTO @PhoneNumber
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+	IF @bit = 0
+		SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887776')
+	ELSE
+		SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887777')
+	FETCH NEXT FROM phone_cursor INTO @PhoneNumber
+END
+CLOSE phone_cursor
+DEALLOCATE phone_cursor
+
+EXECUTE [Stores].[uspUpdatePhoneNumber] @EntityPhoneId, @IsStore, @PhoneUpdXML;
+
+SELECT PhoneNumber
+FROM Stores.Phone 
+WHERE PhoneId IN (SELECT PhoneId FROM @PhoneTab)
+ORDER BY PhoneNumber ASC
+
+SELECT PhoneNumber
+FROM Stores.Phone
+WHERE PhoneNumber IN (SELECT PhoneNumber FROM @PhoneTab)</value>
+  </data>
+  <data name="StrMulNonPUpd_4_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspUpdatePhoneNumber
+DECLARE @EntityPhoneId AS UNIQUEIDENTIFIER, @IsStore AS BIT, @PhoneUpdXML AS XML(CONTENT [Stores].[UpdPhoneXMLSchema]);
+DECLARE @PhoneTab AS TABLE
+(
+	PhoneId		INT,
+	PhoneNumber	VARCHAR(100)
+);
+DECLARE @PhoneNumber VARCHAR(100);
+DECLARE @bit BIT = 0;
+
+SELECT @EntityPhoneId = EntityPhoneId,
+       @IsStore = 1
+FROM Stores.Store
+WHERE StoreCode = 'STR04'
+
+IF (@IsStore = 1)
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.StorePhone sp
+	INNER JOIN Stores.Phone p
+		ON sp.PhoneId = p.PhoneId
+	WHERE sp.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+ELSE
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.EmployeePhone ep
+	INNER JOIN Stores.Phone p
+		ON ep.PhoneId = p.PhoneId
+	WHERE ep.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+
+INSERT @PhoneTab (PhoneNumber, PhoneId)
+SELECT TOP 2 PhoneNumber, p.PhoneId
+FROM Stores.StorePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE ep.EntityPhoneId = @EntityPhoneId
+AND IsPrimary = 0
+
+DECLARE phone_cursor CURSOR FOR
+SELECT PhoneNumber FROM @PhoneTab
+OPEN phone_cursor
+
+FETCH NEXT FROM phone_cursor INTO @PhoneNumber
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+	IF @bit = 0
+		SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887776')
+	ELSE
+		SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887777')
+	FETCH NEXT FROM phone_cursor INTO @PhoneNumber
+END
+CLOSE phone_cursor
+DEALLOCATE phone_cursor
+
+EXECUTE [Stores].[uspUpdatePhoneNumber] @EntityPhoneId, @IsStore, @PhoneUpdXML;
+
+SELECT PhoneNumber
+FROM Stores.Phone 
+WHERE PhoneId IN (SELECT PhoneId FROM @PhoneTab)
+ORDER BY PhoneNumber ASC
+
+SELECT PhoneNumber
+FROM Stores.Phone
+WHERE PhoneNumber IN (SELECT PhoneNumber FROM @PhoneTab)</value>
+  </data>
+  <data name="EmpPriPhUpd_5_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspUpdatePhoneNumber
+DECLARE @EntityPhoneId AS UNIQUEIDENTIFIER, @IsStore AS BIT, @PhoneUpdXML AS XML(CONTENT [Stores].[UpdPhoneXMLSchema]);
+DECLARE @PhoneId INT, @PhoneNumber VARCHAR(100);
+
+SELECT @EntityPhoneId = EntityPhoneId,
+       @IsStore = 0
+FROM Stores.Employee
+WHERE FirstName = 'TestFN'
+AND LastName = 'TestFN'
+
+IF (@IsStore = 1)
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.StorePhone sp
+	INNER JOIN Stores.Phone p
+		ON sp.PhoneId = p.PhoneId
+	WHERE sp.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+ELSE
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.EmployeePhone ep
+	INNER JOIN Stores.Phone p
+		ON ep.PhoneId = p.PhoneId
+	WHERE ep.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+
+SELECT @PhoneNumber = MIN(PhoneNumber)
+FROM Stores.EmployeePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE ep.EntityPhoneId = @EntityPhoneId
+AND IsPrimary = 1
+
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887776')
+
+SELECT @PhoneId = p.PhoneId
+FROM Stores.EmployeePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE EntityPhoneId = @EntityPhoneId
+AND PhoneNumber = @PhoneNumber
+
+EXECUTE [Stores].[uspUpdatePhoneNumber] @EntityPhoneId, @IsStore, @PhoneUpdXML;
+
+SELECT PhoneNumber
+FROM Stores.Phone 
+WHERE PhoneId = @PhoneId
+AND IsPrimary = 1
+
+SELECT PhoneNumber
+FROM Stores.Phone
+WHERE PhoneId IN (SELECT PhoneId FROM Stores.EmployeePhone WHERE EntityPhoneId = @EntityPhoneId)
+AND PhoneNumber = @PhoneNumber</value>
+  </data>
+  <data name="StrPriPhUpd_6_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspUpdatePhoneNumber
+DECLARE @EntityPhoneId AS UNIQUEIDENTIFIER, @IsStore AS BIT, @PhoneUpdXML AS XML(CONTENT [Stores].[UpdPhoneXMLSchema]);
+DECLARE @PhoneId INT, @PhoneNumber VARCHAR(100);
+
+SELECT @EntityPhoneId = EntityPhoneId,
+       @IsStore = 1
+FROM Stores.Store
+WHERE StoreCode = 'STR04'
+
+IF (@IsStore = 1)
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.StorePhone sp
+	INNER JOIN Stores.Phone p
+		ON sp.PhoneId = p.PhoneId
+	WHERE sp.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+ELSE
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.EmployeePhone ep
+	INNER JOIN Stores.Phone p
+		ON ep.PhoneId = p.PhoneId
+	WHERE ep.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+
+SELECT @PhoneNumber = MIN(PhoneNumber)
+FROM Stores.EmployeePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE ep.EntityPhoneId = @EntityPhoneId
+AND IsPrimary = 1
+
+SELECT @PhoneId = p.PhoneId
+FROM Stores.StorePhone sp
+INNER JOIN Stores.Phone p
+	ON sp.PhoneId = p.PhoneId
+WHERE sp.EntityPhoneId = @EntityPhoneId
+AND PhoneNumber = @PhoneNumber
+
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887776')
+
+EXECUTE [Stores].[uspUpdatePhoneNumber] @EntityPhoneId, @IsStore, @PhoneUpdXML;
+
+SELECT PhoneNumber
+FROM Stores.Phone 
+WHERE PhoneId = @PhoneId
+AND IsPrimary = 1
+
+SELECT PhoneNumber
+FROM Stores.Phone
+WHERE PhoneId IN (SELECT PhoneId FROM Stores.EmployeePhone WHERE EntityPhoneId = @EntityPhoneId)
+AND PhoneNumber = @PhoneNumber</value>
+  </data>
+  <data name="EmpInvPhUpdFl_7_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspUpdatePhoneNumber
+DECLARE @EntityPhoneId AS UNIQUEIDENTIFIER, @IsStore AS BIT, @PhoneUpdXML AS XML(CONTENT [Stores].[UpdPhoneXMLSchema]);
+DECLARE @PhoneId INT, @PhoneNumber VARCHAR(100);
+
+SELECT @EntityPhoneId = EntityPhoneId,
+       @IsStore = 0
+FROM Stores.Employee
+WHERE FirstName = 'TestFN'
+AND LastName = 'TestFN'
+
+IF (@IsStore = 1)
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.StorePhone sp
+	INNER JOIN Stores.Phone p
+		ON sp.PhoneId = p.PhoneId
+	WHERE sp.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+ELSE
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.EmployeePhone ep
+	INNER JOIN Stores.Phone p
+		ON ep.PhoneId = p.PhoneId
+	WHERE ep.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+
+SELECT @PhoneNumber = MIN(PhoneNumber)
+FROM Stores.EmployeePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE ep.EntityPhoneId = @EntityPhoneId
+AND IsPrimary = 0
+
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 99988877A6')
+
+SELECT @PhoneId = p.PhoneId
+FROM Stores.EmployeePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE EntityPhoneId = @EntityPhoneId
+AND PhoneNumber = @PhoneNumber
+
+EXECUTE [Stores].[uspUpdatePhoneNumber] @EntityPhoneId, @IsStore, @PhoneUpdXML;
+</value>
+  </data>
+  <data name="StrInvPhUpdFl_8_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspUpdatePhoneNumber
+DECLARE @EntityPhoneId AS UNIQUEIDENTIFIER, @IsStore AS BIT, @PhoneUpdXML AS XML(CONTENT [Stores].[UpdPhoneXMLSchema]);
+DECLARE @PhoneId INT, @PhoneNumber VARCHAR(100);
+
+SELECT @EntityPhoneId = EntityPhoneId,
+       @IsStore = 1
+FROM Stores.Store
+WHERE StoreCode = 'STR04'
+
+IF (@IsStore = 1)
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.StorePhone sp
+	INNER JOIN Stores.Phone p
+		ON sp.PhoneId = p.PhoneId
+	WHERE sp.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+ELSE
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.EmployeePhone ep
+	INNER JOIN Stores.Phone p
+		ON ep.PhoneId = p.PhoneId
+	WHERE ep.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+
+SELECT @PhoneNumber = MIN(PhoneNumber)
+FROM Stores.EmployeePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE ep.EntityPhoneId = @EntityPhoneId
+AND IsPrimary = 0
+
+SELECT @PhoneId = p.PhoneId
+FROM Stores.StorePhone sp
+INNER JOIN Stores.Phone p
+	ON sp.PhoneId = p.PhoneId
+WHERE sp.EntityPhoneId = @EntityPhoneId
+AND PhoneNumber = @PhoneNumber
+
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 999888777A')
+
+EXECUTE [Stores].[uspUpdatePhoneNumber] @EntityPhoneId, @IsStore, @PhoneUpdXML;</value>
+  </data>
+  <data name="EmpUpdNoTgPhFl_9_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspUpdatePhoneNumber
+DECLARE @EntityPhoneId AS UNIQUEIDENTIFIER, @IsStore AS BIT, @PhoneUpdXML AS XML(CONTENT [Stores].[UpdPhoneXMLSchema]);
+DECLARE @PhoneId INT, @PhoneNumber VARCHAR(100);
+
+SELECT @EntityPhoneId = EntityPhoneId,
+       @IsStore = 0
+FROM Stores.Employee
+WHERE FirstName = 'TestFN'
+AND LastName = 'TestFN'
+
+IF (@IsStore = 1)
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.StorePhone sp
+	INNER JOIN Stores.Phone p
+		ON sp.PhoneId = p.PhoneId
+	WHERE sp.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+ELSE
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.EmployeePhone ep
+	INNER JOIN Stores.Phone p
+		ON ep.PhoneId = p.PhoneId
+	WHERE ep.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+
+SELECT @PhoneNumber = MIN(PhoneNumber)
+FROM Stores.EmployeePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE ep.EntityPhoneId = @EntityPhoneId
+AND IsPrimary = 0
+
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887776')
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/@PhoneId)[1] with 1')
+
+SELECT @PhoneId = p.PhoneId
+FROM Stores.EmployeePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE EntityPhoneId = @EntityPhoneId
+AND PhoneNumber = @PhoneNumber
+
+EXECUTE [Stores].[uspUpdatePhoneNumber] @EntityPhoneId, @IsStore, @PhoneUpdXML;</value>
+  </data>
+  <data name="StrUpdNoTgPhFl_10_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspUpdatePhoneNumber
+DECLARE @EntityPhoneId AS UNIQUEIDENTIFIER, @IsStore AS BIT, @PhoneUpdXML AS XML(CONTENT [Stores].[UpdPhoneXMLSchema]);
+DECLARE @PhoneId INT, @PhoneNumber VARCHAR(100);
+
+SELECT @EntityPhoneId = EntityPhoneId,
+       @IsStore = 1
+FROM Stores.Store
+WHERE StoreCode = 'STR04'
+
+IF (@IsStore = 1)
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.StorePhone sp
+	INNER JOIN Stores.Phone p
+		ON sp.PhoneId = p.PhoneId
+	WHERE sp.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+ELSE
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.EmployeePhone ep
+	INNER JOIN Stores.Phone p
+		ON ep.PhoneId = p.PhoneId
+	WHERE ep.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+
+SELECT @PhoneNumber = MIN(PhoneNumber)
+FROM Stores.EmployeePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE ep.EntityPhoneId = @EntityPhoneId
+AND IsPrimary = 0
+
+SELECT @PhoneId = p.PhoneId
+FROM Stores.StorePhone sp
+INNER JOIN Stores.Phone p
+	ON sp.PhoneId = p.PhoneId
+WHERE sp.EntityPhoneId = @EntityPhoneId
+AND PhoneNumber = @PhoneNumber
+
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887776')
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/@PhoneId)[1] with 1')
+
+EXECUTE [Stores].[uspUpdatePhoneNumber] @EntityPhoneId, @IsStore, @PhoneUpdXML;
+</value>
+  </data>
+  <data name="EmpChgPriNu_11_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspUpdatePhoneNumber
+DECLARE @EntityPhoneId AS UNIQUEIDENTIFIER, @IsStore AS BIT, @PhoneUpdXML AS XML(CONTENT [Stores].[UpdPhoneXMLSchema]);
+DECLARE @PhoneId INT, @PhoneNumber VARCHAR(100), @PriPhoneId INT;
+
+SELECT @EntityPhoneId = EntityPhoneId,
+       @IsStore = 0
+FROM Stores.Employee
+WHERE FirstName = 'TestFN'
+AND LastName = 'TestFN'
+
+IF (@IsStore = 1)
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.StorePhone sp
+	INNER JOIN Stores.Phone p
+		ON sp.PhoneId = p.PhoneId
+	WHERE sp.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+ELSE
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.EmployeePhone ep
+	INNER JOIN Stores.Phone p
+		ON ep.PhoneId = p.PhoneId
+	WHERE ep.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+
+SELECT @PhoneNumber = MIN(PhoneNumber)
+FROM Stores.EmployeePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE ep.EntityPhoneId = @EntityPhoneId
+AND IsPrimary = 0
+
+SELECT @PriPhoneId = MIN(p.PhoneId)
+FROM Stores.EmployeePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE ep.EntityPhoneId = @EntityPhoneId
+AND IsPrimary = 1
+
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[@IsPrimary eq 1]/@IsPrimary)[1] with 0')
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/@IsPrimary)[1] with 1')
+
+SELECT @PhoneId = p.PhoneId
+FROM Stores.EmployeePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE EntityPhoneId = @EntityPhoneId
+AND PhoneNumber = @PhoneNumber
+
+EXECUTE [Stores].[uspUpdatePhoneNumber] @EntityPhoneId, @IsStore, @PhoneUpdXML;
+
+SELECT IsPrimary
+FROM Stores.Phone 
+WHERE PhoneId = @PhoneId
+
+SELECT COUNT(PhoneId) AS Cnt
+FROM Stores.Phone p
+INNER JOIN Stores.EmployeePhone ep
+	ON p.PhoneId = ep.PhoneId
+WHERE EntityPhoneId = @EntityPhoneId
+AND IsPrimary = 1</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+</root>
