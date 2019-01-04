@@ -122,11 +122,12 @@
     <Build Include="Stores\Types\XML Schema Collections\DelPhoneXMLSchema.sql" />
     <Build Include="Stores\Stored Procedures\uspRemovePhoneNumber.sql" />
     <Build Include="Stores\Functions\fnGetEmployeePhoneData.sql" />
-    <Build Include="Stores\Stored Procedures\uspValidatePhoneNumbersToRemove.sql" />
+    <Build Include="Stores\Stored Procedures\uspValidateExistingPhoneIds.sql" />
     <Build Include="Stores\Functions\fnGetStoresPhoneData.sql" />
-    <Build Include="Stores\Types\Table Type\PhoneTable.sql" />
+    <Build Include="Stores\Types\Table Type\PhoneTableDeletes.sql" />
     <Build Include="Stores\Stored Procedures\uspUpdatePhoneNumber.sql" />
     <Build Include="Stores\Types\XML Schema Collections\UpdPhoneXMLSchema.sql" />
+    <Build Include="Stores\Types\Table Type\PhoneTableUpdates.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DMartOLTP.refactorlog" />

@@ -69,6 +69,15 @@ namespace DMartOLTPUnitTestProject
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction EmpChgPriNu_11_TestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition Test_11_1;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition Test_11_2;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction StrChgPriNu_12_TestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction EmpChgPriDelNP_13_TestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition Test_13_1;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition Test_13_2;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction StrChgPriDelNP_14_TestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition Test_14_1;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition Test_14_2;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition Test_12_1;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition Test_12_2;
             this.EmpSingNonPUpd_1Data = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.StrSingNonPUpd_2Data = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.EmpMulNonPUpd_3Data = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
@@ -80,6 +89,9 @@ namespace DMartOLTPUnitTestProject
             this.EmpUpdNoTgPhFl_9Data = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.StrUpdNoTgPhFl_10Data = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.EmpChgPriNu_11Data = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
+            this.StrChgPriNu_12Data = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
+            this.EmpChgPriDelNP_13Data = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
+            this.StrChgPriDelNP_14Data = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             EmpSingNonPUpd_1_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             Test_1_1 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             Test_1_2 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.EmptyResultSetCondition();
@@ -111,6 +123,15 @@ namespace DMartOLTPUnitTestProject
             EmpChgPriNu_11_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             Test_11_1 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             Test_11_2 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            StrChgPriNu_12_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            EmpChgPriDelNP_13_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            Test_13_1 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            Test_13_2 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            StrChgPriDelNP_14_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            Test_14_1 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            Test_14_2 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            Test_12_1 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            Test_12_2 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             // 
             // EmpSingNonPUpd_1_TestAction
             // 
@@ -288,7 +309,7 @@ namespace DMartOLTPUnitTestProject
             // 
             Test_6_2.Enabled = true;
             Test_6_2.Name = "Test_6_2";
-            Test_6_2.ResultSet = 1;
+            Test_6_2.ResultSet = 2;
             // 
             // EmpInvPhUpdFl_7_TestAction
             // 
@@ -305,6 +326,90 @@ namespace DMartOLTPUnitTestProject
             // StrUpdNoTgPhFl_10_TestAction
             // 
             resources.ApplyResources(StrUpdNoTgPhFl_10_TestAction, "StrUpdNoTgPhFl_10_TestAction");
+            // 
+            // EmpChgPriNu_11_TestAction
+            // 
+            EmpChgPriNu_11_TestAction.Conditions.Add(Test_11_1);
+            EmpChgPriNu_11_TestAction.Conditions.Add(Test_11_2);
+            resources.ApplyResources(EmpChgPriNu_11_TestAction, "EmpChgPriNu_11_TestAction");
+            // 
+            // Test_11_1
+            // 
+            Test_11_1.ColumnNumber = 1;
+            Test_11_1.Enabled = true;
+            Test_11_1.ExpectedValue = "true";
+            Test_11_1.Name = "Test_11_1";
+            Test_11_1.NullExpected = false;
+            Test_11_1.ResultSet = 1;
+            Test_11_1.RowNumber = 1;
+            // 
+            // Test_11_2
+            // 
+            Test_11_2.ColumnNumber = 1;
+            Test_11_2.Enabled = true;
+            Test_11_2.ExpectedValue = "2";
+            Test_11_2.Name = "Test_11_2";
+            Test_11_2.NullExpected = false;
+            Test_11_2.ResultSet = 2;
+            Test_11_2.RowNumber = 1;
+            // 
+            // StrChgPriNu_12_TestAction
+            // 
+            StrChgPriNu_12_TestAction.Conditions.Add(Test_12_1);
+            StrChgPriNu_12_TestAction.Conditions.Add(Test_12_2);
+            resources.ApplyResources(StrChgPriNu_12_TestAction, "StrChgPriNu_12_TestAction");
+            // 
+            // EmpChgPriDelNP_13_TestAction
+            // 
+            EmpChgPriDelNP_13_TestAction.Conditions.Add(Test_13_1);
+            EmpChgPriDelNP_13_TestAction.Conditions.Add(Test_13_2);
+            resources.ApplyResources(EmpChgPriDelNP_13_TestAction, "EmpChgPriDelNP_13_TestAction");
+            // 
+            // Test_13_1
+            // 
+            Test_13_1.ColumnNumber = 1;
+            Test_13_1.Enabled = true;
+            Test_13_1.ExpectedValue = "true";
+            Test_13_1.Name = "Test_13_1";
+            Test_13_1.NullExpected = false;
+            Test_13_1.ResultSet = 1;
+            Test_13_1.RowNumber = 1;
+            // 
+            // Test_13_2
+            // 
+            Test_13_2.ColumnNumber = 1;
+            Test_13_2.Enabled = true;
+            Test_13_2.ExpectedValue = "1";
+            Test_13_2.Name = "Test_13_2";
+            Test_13_2.NullExpected = false;
+            Test_13_2.ResultSet = 2;
+            Test_13_2.RowNumber = 1;
+            // 
+            // StrChgPriDelNP_14_TestAction
+            // 
+            StrChgPriDelNP_14_TestAction.Conditions.Add(Test_14_1);
+            StrChgPriDelNP_14_TestAction.Conditions.Add(Test_14_2);
+            resources.ApplyResources(StrChgPriDelNP_14_TestAction, "StrChgPriDelNP_14_TestAction");
+            // 
+            // Test_14_1
+            // 
+            Test_14_1.ColumnNumber = 1;
+            Test_14_1.Enabled = true;
+            Test_14_1.ExpectedValue = "true";
+            Test_14_1.Name = "Test_14_1";
+            Test_14_1.NullExpected = false;
+            Test_14_1.ResultSet = 1;
+            Test_14_1.RowNumber = 1;
+            // 
+            // Test_14_2
+            // 
+            Test_14_2.ColumnNumber = 1;
+            Test_14_2.Enabled = true;
+            Test_14_2.ExpectedValue = "1";
+            Test_14_2.Name = "Test_14_2";
+            Test_14_2.NullExpected = false;
+            Test_14_2.ResultSet = 2;
+            Test_14_2.RowNumber = 1;
             // 
             // EmpSingNonPUpd_1Data
             // 
@@ -372,31 +477,43 @@ namespace DMartOLTPUnitTestProject
             this.EmpChgPriNu_11Data.PretestAction = null;
             this.EmpChgPriNu_11Data.TestAction = EmpChgPriNu_11_TestAction;
             // 
-            // EmpChgPriNu_11_TestAction
+            // StrChgPriNu_12Data
             // 
-            EmpChgPriNu_11_TestAction.Conditions.Add(Test_11_1);
-            EmpChgPriNu_11_TestAction.Conditions.Add(Test_11_2);
-            resources.ApplyResources(EmpChgPriNu_11_TestAction, "EmpChgPriNu_11_TestAction");
+            this.StrChgPriNu_12Data.PosttestAction = null;
+            this.StrChgPriNu_12Data.PretestAction = null;
+            this.StrChgPriNu_12Data.TestAction = StrChgPriNu_12_TestAction;
             // 
-            // Test_11_1
+            // EmpChgPriDelNP_13Data
             // 
-            Test_11_1.ColumnNumber = 1;
-            Test_11_1.Enabled = true;
-            Test_11_1.ExpectedValue = "1";
-            Test_11_1.Name = "Test_11_1";
-            Test_11_1.NullExpected = false;
-            Test_11_1.ResultSet = 1;
-            Test_11_1.RowNumber = 1;
+            this.EmpChgPriDelNP_13Data.PosttestAction = null;
+            this.EmpChgPriDelNP_13Data.PretestAction = null;
+            this.EmpChgPriDelNP_13Data.TestAction = EmpChgPriDelNP_13_TestAction;
             // 
-            // Test_11_2
+            // StrChgPriDelNP_14Data
             // 
-            Test_11_2.ColumnNumber = 1;
-            Test_11_2.Enabled = true;
-            Test_11_2.ExpectedValue = "2";
-            Test_11_2.Name = "Test_11_2";
-            Test_11_2.NullExpected = false;
-            Test_11_2.ResultSet = 2;
-            Test_11_2.RowNumber = 1;
+            this.StrChgPriDelNP_14Data.PosttestAction = null;
+            this.StrChgPriDelNP_14Data.PretestAction = null;
+            this.StrChgPriDelNP_14Data.TestAction = StrChgPriDelNP_14_TestAction;
+            // 
+            // Test_12_1
+            // 
+            Test_12_1.ColumnNumber = 1;
+            Test_12_1.Enabled = true;
+            Test_12_1.ExpectedValue = "true";
+            Test_12_1.Name = "Test_12_1";
+            Test_12_1.NullExpected = false;
+            Test_12_1.ResultSet = 1;
+            Test_12_1.RowNumber = 1;
+            // 
+            // Test_12_2
+            // 
+            Test_12_2.ColumnNumber = 1;
+            Test_12_2.Enabled = true;
+            Test_12_2.ExpectedValue = "2";
+            Test_12_2.Name = "Test_12_2";
+            Test_12_2.NullExpected = false;
+            Test_12_2.ResultSet = 2;
+            Test_12_2.RowNumber = 1;
             // 
             // uspUpdatePhoneNumber
             // 
@@ -674,6 +791,78 @@ namespace DMartOLTPUnitTestProject
                 SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
             }
         }
+        [TestMethod()]
+        public void StrChgPriNu_12()
+        {
+            SqlDatabaseTestActions testActions = this.StrChgPriNu_12Data;
+            // Execute the pre-test script
+            // 
+            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
+            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
+            try
+            {
+                // Execute the test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
+                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
+            }
+            finally
+            {
+                // Execute the post-test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
+                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
+            }
+        }
+        [TestMethod()]
+        public void EmpChgPriDelNP_13()
+        {
+            SqlDatabaseTestActions testActions = this.EmpChgPriDelNP_13Data;
+            // Execute the pre-test script
+            // 
+            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
+            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
+            try
+            {
+                // Execute the test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
+                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
+            }
+            finally
+            {
+                // Execute the post-test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
+                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
+            }
+        }
+        [TestMethod()]
+        public void StrChgPriDelNP_14()
+        {
+            SqlDatabaseTestActions testActions = this.StrChgPriDelNP_14Data;
+            // Execute the pre-test script
+            // 
+            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
+            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
+            try
+            {
+                // Execute the test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
+                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
+            }
+            finally
+            {
+                // Execute the post-test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
+                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
+            }
+        }
+
+
+
 
 
 
@@ -695,5 +884,8 @@ namespace DMartOLTPUnitTestProject
         private SqlDatabaseTestActions EmpUpdNoTgPhFl_9Data;
         private SqlDatabaseTestActions StrUpdNoTgPhFl_10Data;
         private SqlDatabaseTestActions EmpChgPriNu_11Data;
+        private SqlDatabaseTestActions StrChgPriNu_12Data;
+        private SqlDatabaseTestActions EmpChgPriDelNP_13Data;
+        private SqlDatabaseTestActions StrChgPriDelNP_14Data;
     }
 }

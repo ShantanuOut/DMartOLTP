@@ -11,7 +11,7 @@ CREATE PROCEDURE [Stores].[uspRemovePhoneNumber]
 	@PhoneDelXML	XML([Stores].[DelPhoneXMLSchema]) = NULL
 AS
 BEGIN	
-	DECLARE @PhoneTable AS [Stores].[PhoneTable]
+	DECLARE @PhoneTable AS [Stores].[PhoneTableDeletes]
 	DECLARE @msg	VARCHAR(100) = NULL,
 			@RC		INT
 
@@ -24,7 +24,7 @@ BEGIN
 			END
 
 			INSERT @PhoneTable
-			EXEC @RC = [Stores].[uspValidatePhoneNumbersToRemove] @EntityPhoneId = @EntityPhoneId, @IsStore = @IsStore, @PhoneDelXML = @PhoneDelXML
+			EXEC @RC = [Stores].[uspValidateExistingPhoneIds] @EntityPhoneId = @EntityPhoneId, @IsStore = @IsStore, @PhoneDelXML = @PhoneDelXML, @Operation = 0
 
 			IF(@RC = 1)
 			BEGIN

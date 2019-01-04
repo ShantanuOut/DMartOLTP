@@ -126,7 +126,7 @@ SELECT @EntityPhoneId = EntityPhoneId,
        @IsStore = 0
 FROM Stores.Employee
 WHERE FirstName = 'TestFN'
-AND LastName = 'TestFN'
+AND LastName = 'TestLN'
 
 IF (@IsStore = 1)
 BEGIN
@@ -162,7 +162,7 @@ INNER JOIN Stores.Phone p
 WHERE ep.EntityPhoneId = @EntityPhoneId
 AND IsPrimary = 0
 
-SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887776')
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")])[1] with "9998887776"')
 
 SELECT @PhoneId = p.PhoneId
 FROM Stores.EmployeePhone ep
@@ -343,7 +343,7 @@ INNER JOIN Stores.Phone p
 WHERE sp.EntityPhoneId = @EntityPhoneId
 AND PhoneNumber = @PhoneNumber
 
-SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887776')
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")])[1] with "9998887776"')
 
 EXECUTE [Stores].[uspUpdatePhoneNumber] @EntityPhoneId, @IsStore, @PhoneUpdXML;
 
@@ -371,7 +371,7 @@ SELECT @EntityPhoneId = EntityPhoneId,
        @IsStore = 0
 FROM Stores.Employee
 WHERE FirstName = 'TestFN'
-AND LastName = 'TestFN'
+AND LastName = 'TestLN'
 
 IF (@IsStore = 1)
 BEGIN
@@ -417,9 +417,11 @@ FETCH NEXT FROM phone_cursor INTO @PhoneNumber
 WHILE @@FETCH_STATUS = 0
 BEGIN
 	IF @bit = 0
-		SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887776')
-	ELSE
-		SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887777')
+	BEGIN
+		SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")])[1] with "9998887776"')
+		SET @bit = 1
+	END
+		SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")])[1] with "9998887777"')
 	FETCH NEXT FROM phone_cursor INTO @PhoneNumber
 END
 CLOSE phone_cursor
@@ -496,9 +498,12 @@ FETCH NEXT FROM phone_cursor INTO @PhoneNumber
 WHILE @@FETCH_STATUS = 0
 BEGIN
 	IF @bit = 0
-		SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887776')
-	ELSE
-		SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887777')
+	BEGIN
+		SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")])[1] with "9998887776"')
+		SET @bit = 1
+	END
+	ELSE																											 			
+		SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")])[1] with "9998887777"')
 	FETCH NEXT FROM phone_cursor INTO @PhoneNumber
 END
 CLOSE phone_cursor
@@ -524,7 +529,7 @@ SELECT @EntityPhoneId = EntityPhoneId,
        @IsStore = 0
 FROM Stores.Employee
 WHERE FirstName = 'TestFN'
-AND LastName = 'TestFN'
+AND LastName = 'TestLN'
 
 IF (@IsStore = 1)
 BEGIN
@@ -560,7 +565,7 @@ INNER JOIN Stores.Phone p
 WHERE ep.EntityPhoneId = @EntityPhoneId
 AND IsPrimary = 1
 
-SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887776')
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")])[1] with "9998887776"')
 
 SELECT @PhoneId = p.PhoneId
 FROM Stores.EmployeePhone ep
@@ -619,7 +624,7 @@ BEGIN
 END
 
 SELECT @PhoneNumber = MIN(PhoneNumber)
-FROM Stores.EmployeePhone ep
+FROM Stores.StorePhone ep
 INNER JOIN Stores.Phone p
 	ON ep.PhoneId = p.PhoneId
 WHERE ep.EntityPhoneId = @EntityPhoneId
@@ -632,7 +637,7 @@ INNER JOIN Stores.Phone p
 WHERE sp.EntityPhoneId = @EntityPhoneId
 AND PhoneNumber = @PhoneNumber
 
-SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887776')
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")])[1] with "9998887776"')
 
 EXECUTE [Stores].[uspUpdatePhoneNumber] @EntityPhoneId, @IsStore, @PhoneUpdXML;
 
@@ -655,7 +660,7 @@ SELECT @EntityPhoneId = EntityPhoneId,
        @IsStore = 0
 FROM Stores.Employee
 WHERE FirstName = 'TestFN'
-AND LastName = 'TestFN'
+AND LastName = 'TestLN'
 
 IF (@IsStore = 1)
 BEGIN
@@ -691,7 +696,7 @@ INNER JOIN Stores.Phone p
 WHERE ep.EntityPhoneId = @EntityPhoneId
 AND IsPrimary = 0
 
-SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 99988877A6')
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")])[1] with "99988877A6"')
 
 SELECT @PhoneId = p.PhoneId
 FROM Stores.EmployeePhone ep
@@ -741,7 +746,7 @@ BEGIN
 END
 
 SELECT @PhoneNumber = MIN(PhoneNumber)
-FROM Stores.EmployeePhone ep
+FROM Stores.StorePhone ep
 INNER JOIN Stores.Phone p
 	ON ep.PhoneId = p.PhoneId
 WHERE ep.EntityPhoneId = @EntityPhoneId
@@ -754,7 +759,7 @@ INNER JOIN Stores.Phone p
 WHERE sp.EntityPhoneId = @EntityPhoneId
 AND PhoneNumber = @PhoneNumber
 
-SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 999888777A')
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")])[1] with "999888777A"')
 
 EXECUTE [Stores].[uspUpdatePhoneNumber] @EntityPhoneId, @IsStore, @PhoneUpdXML;</value>
   </data>
@@ -767,7 +772,7 @@ SELECT @EntityPhoneId = EntityPhoneId,
        @IsStore = 0
 FROM Stores.Employee
 WHERE FirstName = 'TestFN'
-AND LastName = 'TestFN'
+AND LastName = 'TestLN'
 
 IF (@IsStore = 1)
 BEGIN
@@ -803,8 +808,8 @@ INNER JOIN Stores.Phone p
 WHERE ep.EntityPhoneId = @EntityPhoneId
 AND IsPrimary = 0
 
-SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887776')
 SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/@PhoneId)[1] with 1')
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")])[1] with "9998887776"')
 
 SELECT @PhoneId = p.PhoneId
 FROM Stores.EmployeePhone ep
@@ -853,7 +858,7 @@ BEGIN
 END
 
 SELECT @PhoneNumber = MIN(PhoneNumber)
-FROM Stores.EmployeePhone ep
+FROM Stores.StorePhone ep
 INNER JOIN Stores.Phone p
 	ON ep.PhoneId = p.PhoneId
 WHERE ep.EntityPhoneId = @EntityPhoneId
@@ -866,8 +871,8 @@ INNER JOIN Stores.Phone p
 WHERE sp.EntityPhoneId = @EntityPhoneId
 AND PhoneNumber = @PhoneNumber
 
-SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/text())[1] with 9998887776')
 SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/@PhoneId)[1] with 1')
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")])[1] with "9998887776"')
 
 EXECUTE [Stores].[uspUpdatePhoneNumber] @EntityPhoneId, @IsStore, @PhoneUpdXML;
 </value>
@@ -881,7 +886,7 @@ SELECT @EntityPhoneId = EntityPhoneId,
        @IsStore = 0
 FROM Stores.Employee
 WHERE FirstName = 'TestFN'
-AND LastName = 'TestFN'
+AND LastName = 'TestLN'
 
 IF (@IsStore = 1)
 BEGIN
@@ -940,12 +945,221 @@ SELECT IsPrimary
 FROM Stores.Phone 
 WHERE PhoneId = @PhoneId
 
-SELECT COUNT(PhoneId) AS Cnt
+SELECT COUNT(p.PhoneId) AS Cnt
 FROM Stores.Phone p
 INNER JOIN Stores.EmployeePhone ep
 	ON p.PhoneId = ep.PhoneId
 WHERE EntityPhoneId = @EntityPhoneId
-AND IsPrimary = 1</value>
+AND IsPrimary = 0</value>
+  </data>
+  <data name="StrChgPriNu_12_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspUpdatePhoneNumber
+DECLARE @EntityPhoneId AS UNIQUEIDENTIFIER, @IsStore AS BIT, @PhoneUpdXML AS XML(CONTENT [Stores].[UpdPhoneXMLSchema]);
+DECLARE @PhoneId INT, @PhoneNumber VARCHAR(100), @PriPhoneId INT;
+
+SELECT @EntityPhoneId = EntityPhoneId,
+       @IsStore = 1
+FROM Stores.Store
+WHERE StoreCode = 'STR04'
+
+IF (@IsStore = 1)
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.StorePhone sp
+	INNER JOIN Stores.Phone p
+		ON sp.PhoneId = p.PhoneId
+	WHERE sp.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+ELSE
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.EmployeePhone ep
+	INNER JOIN Stores.Phone p
+		ON ep.PhoneId = p.PhoneId
+	WHERE ep.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+
+SELECT @PhoneNumber = MIN(PhoneNumber)
+FROM Stores.StorePhone sp
+INNER JOIN Stores.Phone p
+	ON sp.PhoneId = p.PhoneId
+WHERE sp.EntityPhoneId = @EntityPhoneId
+AND IsPrimary = 0
+
+SELECT @PriPhoneId = MIN(p.PhoneId)
+FROM Stores.StorePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE ep.EntityPhoneId = @EntityPhoneId
+AND IsPrimary = 1
+
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[@IsPrimary eq 1]/@IsPrimary)[1] with 0')
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/@IsPrimary)[1] with 1')
+
+SELECT @PhoneId = p.PhoneId
+FROM Stores.StorePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE EntityPhoneId = @EntityPhoneId
+AND PhoneNumber = @PhoneNumber
+
+EXECUTE [Stores].[uspUpdatePhoneNumber] @EntityPhoneId, @IsStore, @PhoneUpdXML;
+
+SELECT IsPrimary
+FROM Stores.Phone 
+WHERE PhoneId = @PhoneId
+
+SELECT COUNT(p.PhoneId) AS Cnt
+FROM Stores.Phone p
+INNER JOIN Stores.StorePhone ep
+	ON p.PhoneId = ep.PhoneId
+WHERE EntityPhoneId = @EntityPhoneId
+AND IsPrimary = 0</value>
+  </data>
+  <data name="EmpChgPriDelNP_13_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspUpdatePhoneNumber
+DECLARE @EntityPhoneId AS UNIQUEIDENTIFIER, @IsStore AS BIT, @PhoneUpdXML AS XML(CONTENT [Stores].[UpdPhoneXMLSchema]);
+DECLARE @PhoneId INT, @PhoneNumber VARCHAR(100)
+
+SELECT @EntityPhoneId = EntityPhoneId,
+       @IsStore = 0
+FROM Stores.Employee
+WHERE FirstName = 'TestFN'
+AND LastName = 'TestLN'
+
+IF (@IsStore = 1)
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.StorePhone sp
+	INNER JOIN Stores.Phone p
+		ON sp.PhoneId = p.PhoneId
+	WHERE sp.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+ELSE
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.EmployeePhone ep
+	INNER JOIN Stores.Phone p
+		ON ep.PhoneId = p.PhoneId
+	WHERE ep.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+
+SELECT @PhoneNumber = MIN(PhoneNumber)
+FROM Stores.EmployeePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE ep.EntityPhoneId = @EntityPhoneId
+AND IsPrimary = 0
+
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[@IsPrimary eq 1]/@IsPrimary)[1] with 0')
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/@IsPrimary)[1] with 1')
+SET @PhoneUpdXML.modify('delete /PhoneUpdateXML/Phone[@IsPrimary eq 0]')
+
+SELECT @PhoneId = p.PhoneId
+FROM Stores.EmployeePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE EntityPhoneId = @EntityPhoneId
+AND PhoneNumber = @PhoneNumber
+
+EXECUTE [Stores].[uspUpdatePhoneNumber] @EntityPhoneId, @IsStore, @PhoneUpdXML;
+
+SELECT IsPrimary
+FROM Stores.Phone 
+WHERE PhoneId = @PhoneId
+
+SELECT COUNT(p.PhoneId) AS Cnt
+FROM Stores.Phone p
+INNER JOIN Stores.EmployeePhone ep
+	ON p.PhoneId = ep.PhoneId
+WHERE EntityPhoneId = @EntityPhoneId</value>
+  </data>
+  <data name="StrChgPriDelNP_14_TestAction.SqlScript" xml:space="preserve">
+    <value>-- database unit test for Stores.uspUpdatePhoneNumber
+DECLARE @EntityPhoneId AS UNIQUEIDENTIFIER, @IsStore AS BIT, @PhoneUpdXML AS XML(CONTENT [Stores].[UpdPhoneXMLSchema]);
+DECLARE @PhoneId INT, @PhoneNumber VARCHAR(100)
+
+SELECT @EntityPhoneId = EntityPhoneId,
+       @IsStore = 1
+FROM Stores.Store
+WHERE StoreCode = 'STR04'
+
+IF (@IsStore = 1)
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.StorePhone sp
+	INNER JOIN Stores.Phone p
+		ON sp.PhoneId = p.PhoneId
+	WHERE sp.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+ELSE
+BEGIN
+	SET @PhoneUpdXML = (SELECT 
+		p.PhoneId AS '@PhoneId',
+		p.IsPrimary AS '@IsPrimary',
+		p.PhoneNumber AS '*'
+	FROM Stores.EmployeePhone ep
+	INNER JOIN Stores.Phone p
+		ON ep.PhoneId = p.PhoneId
+	WHERE ep.EntityPhoneId = @EntityPhoneId
+	ORDER BY p.PhoneId ASC
+	FOR XML PATH ('Phone'), ROOT('PhoneUpdateXML'), TYPE)
+END
+
+SELECT @PhoneNumber = MIN(PhoneNumber)
+FROM Stores.StorePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE ep.EntityPhoneId = @EntityPhoneId
+AND IsPrimary = 0
+
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[@IsPrimary eq 1]/@IsPrimary)[1] with 0')
+SET @PhoneUpdXML.modify('replace value of (/PhoneUpdateXML/Phone[. eq sql:variable("@PhoneNumber")]/@IsPrimary)[1] with 1')
+SET @PhoneUpdXML.modify('delete /PhoneUpdateXML/Phone[@IsPrimary eq 0]')
+
+SELECT @PhoneId = p.PhoneId
+FROM Stores.StorePhone ep
+INNER JOIN Stores.Phone p
+	ON ep.PhoneId = p.PhoneId
+WHERE EntityPhoneId = @EntityPhoneId
+AND PhoneNumber = @PhoneNumber
+
+EXECUTE [Stores].[uspUpdatePhoneNumber] @EntityPhoneId, @IsStore, @PhoneUpdXML;
+
+SELECT IsPrimary
+FROM Stores.Phone 
+WHERE PhoneId = @PhoneId
+
+SELECT COUNT(p.PhoneId) AS Cnt
+FROM Stores.Phone p
+INNER JOIN Stores.StorePhone ep
+	ON p.PhoneId = ep.PhoneId
+WHERE EntityPhoneId = @EntityPhoneId</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

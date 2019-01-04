@@ -5,7 +5,7 @@
 --Date Modified :
 --Purpose : Holds the Phone Information to be deleted
 /**********************************************************************************************/
-CREATE TYPE [Stores].[PhoneTable] AS TABLE
+CREATE TYPE [Stores].[PhoneTableDeletes] AS TABLE
 (	
 	ExisPhoneId		INT,
 	ExisIsPri		BIT,

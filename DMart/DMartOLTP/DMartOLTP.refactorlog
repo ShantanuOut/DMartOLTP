@@ -112,4 +112,18 @@
     <Property Name="ParentElementType" Value="SqlSchema" />
     <Property Name="NewName" Value="[fnValidatePhoneNumber]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="68231901-6cc3-428d-b9f7-7a55418d143d" ChangeDateTime="01/03/2019 01:31:20">
+    <Property Name="ElementName" Value="[Stores].[uspValidatePhoneNumbersToRemove]" />
+    <Property Name="ElementType" Value="SqlProcedure" />
+    <Property Name="ParentElementName" Value="[Stores]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[uspValidateExistingPhoneIds]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="62270aca-820c-4641-97a5-3aa88eac8bb4" ChangeDateTime="01/03/2019 01:39:19">
+    <Property Name="ElementName" Value="[Stores].[PhoneTable]" />
+    <Property Name="ElementType" Value="SqlTableType" />
+    <Property Name="ParentElementName" Value="[Stores]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[PhoneTableDeletes]" />
+  </Operation>
 </Operations>
