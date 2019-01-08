@@ -129,6 +129,11 @@
     <Build Include="Stores\Types\XML Schema Collections\UpdPhoneXMLSchema.sql" />
     <Build Include="Stores\Types\Table Type\PhoneTableUpdates.sql" />
     <Build Include="Stores\Stored Procedures\uspMarkEmployeeAttendance.sql" />
+    <Build Include="Stores\Stored Procedures\uspRemoveEmployee.sql" />
+    <Build Include="Stores\Tables\EmployeeAttendanceHistory.sql" />
+    <Build Include="Stores\Stored Procedures\uspTransferEmployeeAttendance.sql" />
+    <Build Include="Stores\Stored Procedures\uspChangeReportingManager.sql" />
+    <Build Include="Stores\Types\XML Schema Collections\ChangeReportingManager.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DMartOLTP.refactorlog" />

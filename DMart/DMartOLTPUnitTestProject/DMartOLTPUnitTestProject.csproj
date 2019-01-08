@@ -71,6 +71,9 @@
     <Compile Include="uspMarkEmployeeAttendance.cs">
       <SubType>Designer</SubType>
     </Compile>
+    <Compile Include="uspRemoveEmployee.cs">
+      <SubType>Designer</SubType>
+    </Compile>
     <Compile Include="uspRemovePhoneNumber.cs">
       <SubType>Designer</SubType>
     </Compile>
@@ -97,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="uspMarkEmployeeAttendance.resx">
       <DependentUpon>uspMarkEmployeeAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uspRemoveEmployee.resx">
+      <DependentUpon>uspRemoveEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="uspRemovePhoneNumber.resx">
       <DependentUpon>uspRemovePhoneNumber.cs</DependentUpon>
