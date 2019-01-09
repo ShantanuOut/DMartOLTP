@@ -55,6 +55,11 @@ namespace DMartOLTPUnitTestProject
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.InconclusiveCondition inconclusiveCondition3;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddEmpWitInvMan_TestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.InconclusiveCondition inconclusiveCondition4;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddManWithStrRep_TestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddManWithStrRep_PretestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition PreAddManWithStr;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition AddManWithStrT_1;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition AddManWithStrt_2;
             this.AddEmpWithSinPhData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.AddEmpWithMulPhData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.AddEmpWithInvPhData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
@@ -63,6 +68,7 @@ namespace DMartOLTPUnitTestProject
             this.AddJunRepSenData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.AddEmpWithoutFnLnData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.AddEmpWitInvManData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
+            this.AddManWithStrRepData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             AddEmpWithSinPh_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             CheckCount = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             testCleanupAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
@@ -80,6 +86,11 @@ namespace DMartOLTPUnitTestProject
             inconclusiveCondition3 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.InconclusiveCondition();
             AddEmpWitInvMan_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             inconclusiveCondition4 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.InconclusiveCondition();
+            AddManWithStrRep_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            AddManWithStrRep_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            PreAddManWithStr = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
+            AddManWithStrT_1 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            AddManWithStrt_2 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
             // 
             // AddEmpWithSinPh_TestAction
             // 
@@ -175,6 +186,16 @@ namespace DMartOLTPUnitTestProject
             inconclusiveCondition3.Enabled = true;
             inconclusiveCondition3.Name = "inconclusiveCondition3";
             // 
+            // AddEmpWitInvMan_TestAction
+            // 
+            AddEmpWitInvMan_TestAction.Conditions.Add(inconclusiveCondition4);
+            resources.ApplyResources(AddEmpWitInvMan_TestAction, "AddEmpWitInvMan_TestAction");
+            // 
+            // inconclusiveCondition4
+            // 
+            inconclusiveCondition4.Enabled = true;
+            inconclusiveCondition4.Name = "inconclusiveCondition4";
+            // 
             // AddEmpWithSinPhData
             // 
             this.AddEmpWithSinPhData.PosttestAction = null;
@@ -223,15 +244,46 @@ namespace DMartOLTPUnitTestProject
             this.AddEmpWitInvManData.PretestAction = null;
             this.AddEmpWitInvManData.TestAction = AddEmpWitInvMan_TestAction;
             // 
-            // AddEmpWitInvMan_TestAction
+            // AddManWithStrRepData
             // 
-            AddEmpWitInvMan_TestAction.Conditions.Add(inconclusiveCondition4);
-            resources.ApplyResources(AddEmpWitInvMan_TestAction, "AddEmpWitInvMan_TestAction");
+            this.AddManWithStrRepData.PosttestAction = null;
+            this.AddManWithStrRepData.PretestAction = AddManWithStrRep_PretestAction;
+            this.AddManWithStrRepData.TestAction = AddManWithStrRep_TestAction;
             // 
-            // inconclusiveCondition4
+            // AddManWithStrRep_TestAction
             // 
-            inconclusiveCondition4.Enabled = true;
-            inconclusiveCondition4.Name = "inconclusiveCondition4";
+            AddManWithStrRep_TestAction.Conditions.Add(AddManWithStrT_1);
+            AddManWithStrRep_TestAction.Conditions.Add(AddManWithStrt_2);
+            resources.ApplyResources(AddManWithStrRep_TestAction, "AddManWithStrRep_TestAction");
+            // 
+            // AddManWithStrRep_PretestAction
+            // 
+            AddManWithStrRep_PretestAction.Conditions.Add(PreAddManWithStr);
+            resources.ApplyResources(AddManWithStrRep_PretestAction, "AddManWithStrRep_PretestAction");
+            // 
+            // PreAddManWithStr
+            // 
+            PreAddManWithStr.Enabled = true;
+            PreAddManWithStr.Name = "PreAddManWithStr";
+            PreAddManWithStr.ResultSet = 1;
+            PreAddManWithStr.RowCount = 2;
+            // 
+            // AddManWithStrT_1
+            // 
+            AddManWithStrT_1.ColumnNumber = 1;
+            AddManWithStrT_1.Enabled = true;
+            AddManWithStrT_1.ExpectedValue = "1";
+            AddManWithStrT_1.Name = "AddManWithStrT_1";
+            AddManWithStrT_1.NullExpected = false;
+            AddManWithStrT_1.ResultSet = 1;
+            AddManWithStrT_1.RowNumber = 1;
+            // 
+            // AddManWithStrt_2
+            // 
+            AddManWithStrt_2.Enabled = true;
+            AddManWithStrt_2.Name = "AddManWithStrt_2";
+            AddManWithStrt_2.ResultSet = 2;
+            AddManWithStrt_2.RowCount = 2;
             // 
             // uspAddEmployee
             // 
@@ -439,6 +491,30 @@ namespace DMartOLTPUnitTestProject
                 SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
             }
         }
+        [TestMethod()]
+        public void AddManWithStrRep()
+        {
+            SqlDatabaseTestActions testActions = this.AddManWithStrRepData;
+            // Execute the pre-test script
+            // 
+            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
+            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
+            try
+            {
+                // Execute the test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
+                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
+            }
+            finally
+            {
+                // Execute the post-test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
+                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
+            }
+        }
+
 
 
 
@@ -454,5 +530,6 @@ namespace DMartOLTPUnitTestProject
         private SqlDatabaseTestActions AddJunRepSenData;
         private SqlDatabaseTestActions AddEmpWithoutFnLnData;
         private SqlDatabaseTestActions AddEmpWitInvManData;
+        private SqlDatabaseTestActions AddManWithStrRepData;
     }
 }

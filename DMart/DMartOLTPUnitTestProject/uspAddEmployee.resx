@@ -468,6 +468,105 @@ SET @Employee = '
 
 EXECUTE [Stores].[uspAddEmployee] @Employee;</value>
   </data>
+  <data name="AddManWithStrRep_PretestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run before
+the test script is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @Employee AS XML(DOCUMENT [Stores].[EmployeeXMLSchema]);
+SET @Employee = '
+&lt;Employee IsManager="0"  Designation="Senior" BloodGroup="O+" StoreId="2"&gt;
+	&lt;FirstName&gt;EMPFN1&lt;/FirstName&gt;
+	&lt;LastName&gt;EMPFN2&lt;/LastName&gt;
+	&lt;ReportingManager&gt;1&lt;/ReportingManager&gt;
+	&lt;Address&gt;
+		&lt;AddressLine1&gt;Address1&lt;/AddressLine1&gt;
+		&lt;AddressLine2&gt;Address2&lt;/AddressLine2&gt;
+		&lt;AddressLine3&gt;Address3&lt;/AddressLine3&gt;
+	&lt;/Address&gt;
+	&lt;PhoneNumbers&gt;
+		&lt;Phone IsPrimary="1"&gt;+918983879706&lt;/Phone&gt;		
+	&lt;/PhoneNumbers&gt;
+&lt;/Employee&gt;'
+
+EXECUTE [Stores].[uspAddEmployee] @Employee;
+
+SET @Employee = '
+&lt;Employee IsManager="0"  Designation="Junior" BloodGroup="O+" StoreId="2"&gt;
+	&lt;FirstName&gt;EMPFN2&lt;/FirstName&gt;
+	&lt;LastName&gt;EMPLN2&lt;/LastName&gt;
+	&lt;ReportingManager&gt;1&lt;/ReportingManager&gt;
+	&lt;Address&gt;
+		&lt;AddressLine1&gt;Address1&lt;/AddressLine1&gt;
+		&lt;AddressLine2&gt;Address2&lt;/AddressLine2&gt;
+		&lt;AddressLine3&gt;Address3&lt;/AddressLine3&gt;
+	&lt;/Address&gt;
+	&lt;PhoneNumbers&gt;
+		&lt;Phone IsPrimary="1"&gt;+918983879707&lt;/Phone&gt;		
+	&lt;/PhoneNumbers&gt;
+&lt;/Employee&gt;'
+
+EXECUTE [Stores].[uspAddEmployee] @Employee;
+
+SELECT EmployeeId
+FROM [Stores].Employee
+WHERE StoreId = 2
+AND FirstName IN ('EMPFN2', 'EMPFN1')
+AND OrgPath.IsDescendantOf(0x) = 1</value>
+  </data>
+  <data name="AddManWithStrRep_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+DECLARE @Employee AS XML(DOCUMENT [Stores].[EmployeeXMLSchema]),
+		@parent hierarchyid;
+SET @Employee = '
+&lt;Employee IsManager="1"  Designation="Manager" BloodGroup="O+" StoreId="2"&gt;
+	&lt;FirstName&gt;MANFN1&lt;/FirstName&gt;
+	&lt;LastName&gt;MANLN1&lt;/LastName&gt;
+	&lt;ReportingManager&gt;1&lt;/ReportingManager&gt;
+	&lt;Address&gt;
+		&lt;AddressLine1&gt;Address1&lt;/AddressLine1&gt;
+		&lt;AddressLine2&gt;Address2&lt;/AddressLine2&gt;
+		&lt;AddressLine3&gt;Address3&lt;/AddressLine3&gt;
+	&lt;/Address&gt;
+	&lt;PhoneNumbers&gt;
+		&lt;Phone IsPrimary="1"&gt;+918983879708&lt;/Phone&gt;		
+	&lt;/PhoneNumbers&gt;
+&lt;/Employee&gt;'
+
+EXECUTE [Stores].[uspAddEmployee] @Employee, @TransferEmp = 1;
+
+SELECT COUNT(1) AS Cnt
+FROM [Stores].[Employee]
+WHERE FirstName = 'MANFN1'
+AND LastName = 'MANLN1'
+AND IsManager = 1
+
+SELECT @parent = OrgPath
+FROM [Stores].[Employee]
+WHERE FirstName = 'MANFN1'
+AND LastName = 'MANLN1'
+AND IsManager = 1
+
+SELECT EmployeeId
+FROM [Stores].Employee
+WHERE StoreId = 2
+AND FirstName IN ('EMPFN2', 'EMPFN1')
+AND OrgPath.IsDescendantOf(@parent) = 1</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
