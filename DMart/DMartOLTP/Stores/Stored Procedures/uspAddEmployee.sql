@@ -83,7 +83,7 @@ BEGIN
 					Address2			VARCHAR(100)	'./Address/AddressLine2',
 					Address3			VARCHAR(100)	'./Address/AddressLine3',
 					StoreId				INT				'@StoreId',
-					BloodGroup			CHAR(3)			'@BloodGroup',
+					BloodGroup			VARCHAR(3)		'@BloodGroup',
 					IsManager			BIT				'@IsManager',
 					Designation			VARCHAR(10)		'@Designation'
 				)

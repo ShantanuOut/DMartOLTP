@@ -11,7 +11,7 @@
     [Address2]			VARCHAR(100) NULL, 
     [Address3]			VARCHAR(100) NULL, 
     [StoreId]			INT NOT NULL, 
-    [BloodGroup]		CHAR(3) NULL, 
+    [BloodGroup]		VARCHAR(3) NULL, 
     [IsManager]			BIT NOT NULL DEFAULT (0), 
     [Designation]		VARCHAR(10) NULL, 
     CONSTRAINT [PK_Employee_EmployeeId] PRIMARY KEY ([EmployeeId]), 

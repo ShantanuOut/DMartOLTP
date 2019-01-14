@@ -134,6 +134,8 @@
     <Build Include="Stores\Stored Procedures\uspTransferEmployeeAttendance.sql" />
     <Build Include="Stores\Stored Procedures\uspChangeReportingManager.sql" />
     <Build Include="Stores\Types\XML Schema Collections\ChangeReportingManager.sql" />
+    <Build Include="Stores\Types\XML Schema Collections\UpdEmployeeSchema.sql" />
+    <Build Include="Stores\Stored Procedures\uspUpdateEmployeeDetails.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DMartOLTP.refactorlog" />

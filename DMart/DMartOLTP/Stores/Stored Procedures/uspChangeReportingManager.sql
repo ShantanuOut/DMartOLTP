@@ -37,6 +37,7 @@ BEGIN
 	SELECT @maxChild = MAX(OrgPath)
 	FROM Stores.Employee
 	WHERE OrgPath.IsDescendantOf(@parenthier) = 1
+	AND OrgPath.GetLevel() = 1
 
 	IF(@parenthier IS NOT NULL AND @IsManager = 1)
 	BEGIN
