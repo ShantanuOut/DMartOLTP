@@ -126,4 +126,11 @@
     <Property Name="ParentElementType" Value="SqlSchema" />
     <Property Name="NewName" Value="[PhoneTableDeletes]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="6973ad49-999c-4e48-b5ff-363828bb0f4b" ChangeDateTime="01/22/2019 03:14:48">
+    <Property Name="ElementName" Value="[Stores].[fnGetReporteesCount]" />
+    <Property Name="ElementType" Value="SqlInlineTableValuedFunction" />
+    <Property Name="ParentElementName" Value="[Stores]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[fnGetReportees]" />
+  </Operation>
 </Operations>

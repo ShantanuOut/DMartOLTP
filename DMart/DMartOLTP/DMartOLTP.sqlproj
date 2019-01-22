@@ -86,6 +86,8 @@
     <Folder Include="Stores\Types" />
     <Folder Include="Stores\Types\XML Schema Collections" />
     <Folder Include="Stores\Types\Table Type" />
+    <Folder Include="Stores\Functions\Inline" />
+    <Folder Include="Stores\Functions\Scalar" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Products\Products.sql" />
@@ -113,17 +115,13 @@
     <Build Include="Stores\Tables\EmployeePhone.sql" />
     <Build Include="Stores\Tables\StorePhone.sql" />
     <None Include="Post Deployment\Stores.Employee.sql" />
-    <Build Include="Stores\Functions\fnValidatePhoneNumber.sql" />
     <Build Include="Stores\Types\XML Schema Collections\EmployeeXMLSchema.sql" />
-    <Build Include="Stores\Functions\fnGenerateEmployeeCode.sql" />
     <Build Include="Stores\Stored Procedures\uspAddEmployee.sql" />
     <Build Include="Stores\Types\XML Schema Collections\PhoneXMLSchema.sql" />
     <Build Include="Stores\Stored Procedures\uspAddPhoneNumbers.sql" />
     <Build Include="Stores\Types\XML Schema Collections\DelPhoneXMLSchema.sql" />
     <Build Include="Stores\Stored Procedures\uspRemovePhoneNumber.sql" />
-    <Build Include="Stores\Functions\fnGetEmployeePhoneData.sql" />
     <Build Include="Stores\Stored Procedures\uspValidateExistingPhoneIds.sql" />
-    <Build Include="Stores\Functions\fnGetStoresPhoneData.sql" />
     <Build Include="Stores\Types\Table Type\PhoneTableDeletes.sql" />
     <Build Include="Stores\Stored Procedures\uspUpdatePhoneNumber.sql" />
     <Build Include="Stores\Types\XML Schema Collections\UpdPhoneXMLSchema.sql" />
@@ -136,6 +134,15 @@
     <Build Include="Stores\Types\XML Schema Collections\ChangeReportingManager.sql" />
     <Build Include="Stores\Types\XML Schema Collections\UpdEmployeeSchema.sql" />
     <Build Include="Stores\Stored Procedures\uspUpdateEmployeeDetails.sql" />
+    <Build Include="Stores\Functions\Scalar\fnValidatePhoneNumber.sql" />
+    <Build Include="Stores\Functions\Scalar\fnGenerateEmployeeCode.sql" />
+    <Build Include="Stores\Functions\Inline\fnGetEmployeePhoneData.sql" />
+    <Build Include="Stores\Functions\Inline\fnGetStoresPhoneData.sql" />
+    <Build Include="Stores\Functions\Inline\fnGetReportees.sql" />
+    <Build Include="Stores\Types\XML Schema Collections\GetEmployeeDetailsXMLSchema.sql" />
+    <Build Include="Stores\Types\XML Schema Collections\GetPhoneDetailsXMLSchema.sql" />
+    <Build Include="Stores\Functions\Inline\fnGetPhoneDetails.sql" />
+    <Build Include="Stores\Stored Procedures\uspGetEmployeeDetails.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DMartOLTP.refactorlog" />
